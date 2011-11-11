@@ -12,6 +12,6 @@ chúng ta cần làm. File use case dùng để vẽ use case cho chương trìn
 demo chương trình thi lái xe chạy trên android rồi. 2 bạn cài rồi tham khảo nha.:)
 6. Folder Code dùng để lưu Project của chúng ta. Thương sẽ commit giao diện chương trình trong thời gian sớm nhất.
 
-Vinh, Thiệu có dùng góp ý thì pm qua Yahoo nha. Cho nhanh. Còn coding với database,
-thì khi các bạn làm xong, commit lên SVN luôn. :D
+Vinh, Thiệu góp ý project thì pm qua Yahoo nha. Cho nhanh. Còn coding với database,
+thì khi làm xong, commit lên SVN luôn. :D
 Chúc project của chúng ta sớm hoàn thành và thành công!^^
