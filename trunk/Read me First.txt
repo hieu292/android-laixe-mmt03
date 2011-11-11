@@ -1,0 +1,17 @@
+﻿Vinh, Thiệu xem cái này trước nha.
+1. Tụi mình sẽ làm trên SVN Google code. Trước khi các bạn bắt đầu coding thì dùng 
+SVN update trước, rồi sau đó mới bắt đầu coding.
+2. Khi làm xong, các bạn thấy không có lỗi thì mới commit lên nha.
+3. File Ke hoach.mpp là file MS Project, bao gồm nhiệm vụ và thời gian dealine của 
+từng thành viên trong nhóm chúng ta. Vinh, Thiệu cố gắng hoàn thành dealine nha. Thương tính thì
+chúng ta chỉ còn 20 ngày để hoàn thành project này. Chúng ta phải làm gấp nha các bạn.
+Nếu Thương phân chia thời gian không hợp lý thì pm Thương ngay nha. 
+4. Folder Requirement, chứa file SRS là file đặc tả về các chức năng của chương trình 
+chúng ta cần làm. File use case dùng để vẽ use case cho chương trình.
+5. Folder soft dùng để lưu cái chương trình cần thiết. Trong đó Thương đã lưu sẵn 1 file
+demo chương trình thi lái xe chạy trên android rồi. 2 bạn cài rồi tham khảo nha.:)
+6. Folder Code dùng để lưu Project của chúng ta. Thương sẽ commit giao diện chương trình trong thời gian sớm nhất.
+
+Vinh, Thiệu có dùng góp ý thì pm qua Yahoo nha. Cho nhanh. Còn coding với database,
+thì khi các bạn làm xong, commit lên SVN luôn. :D
+Chúc project của chúng ta sớm hoàn thành và thành công!^^
