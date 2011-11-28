@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.Button;
 
 public class BaseActivity extends Activity{
-	Button btnAdduser, btnDeluser;
+	Button btnAdduser, btnDeluser, btnLogin;
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -16,6 +16,7 @@ public class BaseActivity extends Activity{
         
         btnAdduser = (Button)findViewById(R.id.btnAddUser);
         btnDeluser = (Button)findViewById(R.id.btnDelUser);
+        btnLogin = (Button)findViewById(R.id.btnLogin);
         
         btnAdduser.setOnClickListener(new View.OnClickListener() {
 			
@@ -32,6 +33,14 @@ public class BaseActivity extends Activity{
 				// TODO Auto-generated method stub
 				//create intent deluser form
 				startActivity(new Intent("com.uit.DELUSER"));
+			}
+		});
+        
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				startActivity(new Intent("com.uit.LOGIN"));
 			}
 		});
         
