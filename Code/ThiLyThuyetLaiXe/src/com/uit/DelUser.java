@@ -4,10 +4,12 @@ import objects.Person;
 import android.app.Activity;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 public class DelUser extends Activity{
@@ -29,6 +31,17 @@ public class DelUser extends Activity{
 		final AutoCompleteTextView txtUserName = (AutoCompleteTextView)findViewById(R.id.autoCompleteUserName);
 		txtUserName.setThreshold(1);
 		txtUserName.setAdapter(adapter);
+		
+		txtUserName.setOnKeyListener(new AutoCompleteTextView.OnKeyListener(){
+
+			public boolean onKey(View v, int keyCode, KeyEvent event) {
+				// TODO Auto-generated method stub
+				return false;
+			}
+			
+		});
+		
+		
 		
 		//create a instance of Person
 		final Person p = new Person(this); 
@@ -84,7 +97,7 @@ public class DelUser extends Activity{
 		user.open();
 		
 		Cursor c = user.getAllUsers();
-		int count = c.getCount();
+		int count = c.getColumnCount();
 		//Toast.makeText(getBaseContext(), ((Integer)count).toString(), Toast.LENGTH_SHORT).show();
 		int index = 0;
 		String[] result = new String[count];
