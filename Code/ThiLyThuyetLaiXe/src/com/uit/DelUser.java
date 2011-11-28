@@ -26,21 +26,11 @@ public class DelUser extends Activity{
 		usernames = getListofUserName();
 		
 		//Create arraydapter <String> to save list of username query from database
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, usernames);
+		final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, usernames);
 		
 		final AutoCompleteTextView txtUserName = (AutoCompleteTextView)findViewById(R.id.autoCompleteUserName);
 		txtUserName.setThreshold(1);
 		txtUserName.setAdapter(adapter);
-		
-		txtUserName.setOnKeyListener(new AutoCompleteTextView.OnKeyListener(){
-
-			public boolean onKey(View v, int keyCode, KeyEvent event) {
-				// TODO Auto-generated method stub
-				return false;
-			}
-			
-		});
-		
 		
 		
 		//create a instance of Person
@@ -81,6 +71,8 @@ public class DelUser extends Activity{
 						txtUserName.setText("");
 						txtUserName.setFocusable(true);
 						usernames = getListofUserName();
+						ArrayAdapter<String> adapter1 = new  ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_dropdown_item_1line, usernames);
+						txtUserName.setAdapter(adapter1);
 					}					
 					p.close();
 				}	
