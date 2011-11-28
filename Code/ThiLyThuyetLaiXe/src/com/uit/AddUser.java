@@ -91,6 +91,8 @@ public class AddUser extends Activity {
 						Toast.makeText(getBaseContext(), "Insert successfully!", Toast.LENGTH_SHORT).show();
 					else
 						Toast.makeText(getBaseContext(), "Insert failed!", Toast.LENGTH_SHORT).show();
+					txtName.setFocusable(true);
+					txtName.setText("");
 				}
 				
 				//close adapter

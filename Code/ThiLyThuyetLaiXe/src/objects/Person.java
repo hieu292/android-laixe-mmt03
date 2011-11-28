@@ -113,4 +113,27 @@ public class Person {
     		return true;
     	return false;
     }
+  //function query list of username from database after click button delete
+  	public String[] getListofUserName(Context _context)
+  	{
+  		
+  		//create a Person instance
+  		Person user = new Person(_context);
+  		user.open();
+  		
+  		Cursor c = user.getAllUsers();
+  		int count = c.getCount();
+  		//Toast.makeText(getBaseContext(), ((Integer)count).toString(), Toast.LENGTH_SHORT).show();
+  		int index = 0;
+  		String[] result = new String[count];
+  		if(c.moveToFirst()){		
+  			do{
+  				//add name to list String
+  				result[index++] = c.getString(1).toString();				
+  			}while(c.moveToNext());
+  		}		
+  		user.close();
+  		
+  		return result;
+  	}
 }
