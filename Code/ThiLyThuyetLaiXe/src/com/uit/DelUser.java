@@ -65,6 +65,8 @@ public class DelUser extends Activity{
 						Toast.makeText(getBaseContext(), "Delete successfully!", Toast.LENGTH_SHORT).show();
 						
 						//update String[]
+						txtUserName.setText("");
+						txtUserName.setFocusable(true);
 						usernames = getListofUserName();
 					}					
 					p.close();
