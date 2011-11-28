@@ -11,19 +11,40 @@ public final class R {
     public static final class attr {
     }
     public static final class drawable {
-        public static final int icon=0x7f020000;
+        public static final int de1=0x7f020000;
+        public static final int de10=0x7f020001;
+        public static final int de11=0x7f020002;
+        public static final int de12=0x7f020003;
+        public static final int de13=0x7f020004;
+        public static final int de14=0x7f020005;
+        public static final int de15=0x7f020006;
+        public static final int de16=0x7f020007;
+        public static final int de17=0x7f020008;
+        public static final int de18=0x7f020009;
+        public static final int de19=0x7f02000a;
+        public static final int de2=0x7f02000b;
+        public static final int de20=0x7f02000c;
+        public static final int de3=0x7f02000d;
+        public static final int de4=0x7f02000e;
+        public static final int de5=0x7f02000f;
+        public static final int de6=0x7f020010;
+        public static final int de7=0x7f020011;
+        public static final int de8=0x7f020012;
+        public static final int de9=0x7f020013;
+        public static final int icon=0x7f020014;
     }
     public static final class id {
         public static final int autoCompleteUserName=0x7f050003;
-        public static final int btnAddUser=0x7f05000a;
+        public static final int btnAddUser=0x7f05000b;
         public static final int btnDel=0x7f050004;
-        public static final int btnDelUser=0x7f05000b;
-        public static final int btnLogin=0x7f050009;
+        public static final int btnDelUser=0x7f05000c;
+        public static final int btnLogin=0x7f05000a;
         public static final int btnLuyenThi=0x7f050006;
         public static final int btnThiThu=0x7f050007;
         public static final int btnXemKetQua=0x7f050008;
         public static final int buttonCancel=0x7f050001;
         public static final int buttonRegister=0x7f050002;
+        public static final int gridviewChonDeLuyenThi=0x7f050009;
         public static final int textViewUserName=0x7f050005;
         public static final int txtUsername=0x7f050000;
     }
@@ -32,7 +53,8 @@ public final class R {
         public static final int deluser=0x7f030001;
         public static final int exam=0x7f030002;
         public static final int login=0x7f030003;
-        public static final int main=0x7f030004;
+        public static final int luyenthi_chonde=0x7f030004;
+        public static final int main=0x7f030005;
     }
     public static final class string {
         public static final int app_name=0x7f040001;
