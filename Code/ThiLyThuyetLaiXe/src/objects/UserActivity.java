@@ -8,9 +8,13 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 
 public class UserActivity {
+	public final static String ACCOUNT = "account";
+	public final static String NAME = "name";
+	
 	private Context context;
 	final Person user;
 
@@ -32,15 +36,15 @@ public class UserActivity {
 		if(c.moveToFirst()){
         	do{
         		//check name is not null
-        		if(username == null){
-        			result = "User name must not null!";
+        		if(username == null || username.equals("")){
+        			result = "Tên tài khoản không thể để trống";
         			ok = false;
         			break;
         		}
         		//check name is not exists in database
         		if(user.CheckName(c, username))
         		{
-        			result = "User name was existed!";
+        			result = "Tên tài khoản đã tồn tại";
         			ok = false;
         			break;
         		}
@@ -56,9 +60,9 @@ public class UserActivity {
 			long i = user.insertUser(username);
 			
 			if(i != -1)
-				result =  "Insert successfully!";
+				result =  "Thêm tài khoản thành công!";
 			else
-				result = "Insert failed!";
+				result = "Thêm tài khoản thất bại";
 		}
 		
 		//close adapter
@@ -71,7 +75,7 @@ public class UserActivity {
 		
 		final Person p = new Person(context);
 		if(username == null){
-			result = "Enter username will delete!";
+			result = "Vui lòng chọn tài khoản";
 		}
 		else{					
 			int id = -1;
@@ -87,13 +91,13 @@ public class UserActivity {
 			}
 			//if don't exists username entered in database, warning!
 			if(id == -1){
-				result = "Don't exists this username in database!";
+				result = "Không tồn tại tài khoản này trong cơ sở dữ liệu";
 			}
 			else
 			{
 				//delete user name entered
 				p.deleteUser(id);
-				result = "Delete successfully!";
+				result = "Xóa tài khoản thành công!";
 			}					
 			p.close();
 		}		
@@ -132,6 +136,20 @@ public class UserActivity {
 		outputStream.close();
 	}
 
+	public void storeInformation(String username) {
+		SharedPreferences account = context.getSharedPreferences(ACCOUNT, 0);
+		SharedPreferences.Editor editor = account.edit();
+		editor.putString(NAME, username);
+		editor.commit();
+		
+	}
+	
+	public void removeSaveInfo(){
+		SharedPreferences account = context.getSharedPreferences(ACCOUNT, 0);
+		SharedPreferences.Editor editor = account.edit();
+		editor.remove(ACCOUNT);
+		editor.commit();
+	}
 //	// function to display user from cursor
 //	public void DisplayContact(Cursor c) {
 //		Toast.makeText(
