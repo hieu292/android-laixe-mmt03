@@ -7,14 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import android.R;
 import android.content.Context;
 import android.database.Cursor;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button;
-import android.widget.Toast;
 
 public class UserActivity {
 	private Context context;
@@ -76,7 +70,6 @@ public class UserActivity {
 		String result;	
 		
 		final Person p = new Person(context);
-		// TODO Auto-generated method stub
 		if(username == null){
 			result = "Enter username will delete!";
 		}
