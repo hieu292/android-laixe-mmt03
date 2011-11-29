@@ -43,18 +43,15 @@ public final class R {
         public static final int m_splash_screen=0x7f02001d;
     }
     public static final class id {
-        public static final int btnAddUser=0x7f050006;
-        public static final int btnDelUser=0x7f050007;
-        public static final int btnLogin=0x7f050005;
         public static final int btnLuyenThi=0x7f050001;
         public static final int btnThiThu=0x7f050002;
         public static final int btnXemKetQua=0x7f050003;
         public static final int gridviewChonDeLuyenThi=0x7f050004;
-        public static final int m_btnAccount=0x7f05000c;
-        public static final int m_btnStatistic=0x7f05000b;
-        public static final int m_btnTest=0x7f05000a;
-        public static final int m_btnTrain=0x7f050009;
-        public static final int m_txtUsername=0x7f050008;
+        public static final int m_btnAccount=0x7f050009;
+        public static final int m_btnStatistic=0x7f050008;
+        public static final int m_btnTest=0x7f050007;
+        public static final int m_btnTrain=0x7f050006;
+        public static final int m_txtUsername=0x7f050005;
         public static final int textViewUserName=0x7f050000;
     }
     public static final class layout {
@@ -63,7 +60,6 @@ public final class R {
         public static final int login=0x7f030002;
         public static final int luyenthi_chonde=0x7f030003;
         public static final int main=0x7f030004;
-        public static final int mainx=0x7f030005;
     }
     public static final class string {
         public static final int app_name=0x7f040001;

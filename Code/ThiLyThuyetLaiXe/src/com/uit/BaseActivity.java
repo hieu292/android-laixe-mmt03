@@ -25,7 +25,7 @@ public class BaseActivity extends Activity{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainx);
+        setContentView(R.layout.main);
         txtUsername = (TextView) findViewById(R.id.m_txtUsername);
         btnAdduser = (ImageButton) findViewById(R.id.m_btnTrain);
         
