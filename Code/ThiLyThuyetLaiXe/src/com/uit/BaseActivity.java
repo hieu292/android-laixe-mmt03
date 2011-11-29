@@ -5,6 +5,7 @@ import objects.UserActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -14,10 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class BaseActivity extends Activity {
-	public final static String ACCOUNT = "account";
-	public final static String NAME = "name";
 
-	ImageButton btnTrain;
+	ImageButton btnTrain, btnAccount;
 	TextView txtUsername, txtEditUser;
 
 	/** Called when the activity is first created. */
@@ -27,6 +26,7 @@ public class BaseActivity extends Activity {
 		setContentView(R.layout.main);
 		txtUsername = (TextView) findViewById(R.id.m_txtUsername);
 		btnTrain = (ImageButton) findViewById(R.id.m_btnTrain);
+		btnAccount = (ImageButton) findViewById(R.id.m_btnAccount);
 		txtEditUser = (TextView) findViewById(R.id.m_txtEditUser);
 
 		checkLogin();
@@ -37,11 +37,19 @@ public class BaseActivity extends Activity {
 				CreateUserDialog();
 			}
 		});
+		
+		btnAccount.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(BaseActivity.this, AccountActivity.class);
+				startActivity(i);
+			}
+		});
 	}
 
 	public void checkLogin() {
-		SharedPreferences account = getSharedPreferences(ACCOUNT, 0);
-		String username = account.getString(NAME, null);
+		SharedPreferences account = getSharedPreferences(UserActivity.ACCOUNT, 0);
+		String username = account.getString(UserActivity.NAME, null);
 		if (username == null || username.equals("")) {
 			createLoginDialog();
 		} else {
@@ -60,10 +68,10 @@ public class BaseActivity extends Activity {
 				String username = input.getText().toString().trim();
 				UserActivity user = new UserActivity(getBaseContext());
 				String result = user.AddUser(username);
-				if (result.equals("Insert successfully!")) {
+				if (result.equals("Thêm tài khoản thành công!")) {
 					txtUsername.setText(username);
 					
-					storeInformation(username);
+					user.storeInformation(username);
 					dialog.dismiss();
 				} else {
 					checkLogin();
@@ -129,12 +137,4 @@ public class BaseActivity extends Activity {
 		AlertDialog dialog = builder.create();
 		dialog.show();
 	}
-
-	public void storeInformation(String username) {
-		SharedPreferences account = getSharedPreferences(ACCOUNT, 0);
-		SharedPreferences.Editor editor = account.edit();
-		editor.putString(NAME, username);
-		editor.commit();
-	}
-
 }
