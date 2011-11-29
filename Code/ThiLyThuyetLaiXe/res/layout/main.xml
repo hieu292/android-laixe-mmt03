@@ -4,15 +4,24 @@
   android:layout_width="fill_parent"
   android:layout_height="fill_parent"
   android:orientation="vertical"
-  android:gravity="center"
   android:background="@drawable/m_brg"
   >
   	<TextView 
   	    android:id="@+id/m_txtUsername"
   	    android:layout_width="fill_parent"
-  	    android:layout_height="20dp"
-  	    android:gravity="center"
-  	    android:textSize="15sp"/>
+  	    android:layout_height="wrap_content"
+  	    android:gravity="center_horizontal"
+  	    android:textSize="25sp"
+  	    android:textColor="#000000"
+  	    android:textStyle="bold"/>
+  	<TextView 
+  	    android:id="@+id/m_txtEditUser"
+  	    android:layout_width="wrap_content"
+  	    android:layout_height="wrap_content"
+  	    android:text="Not me, Click here"
+  	    android:layout_marginTop="5dp"
+  	    android:textSize="15sp"
+  	    android:layout_gravity="center"/>
   	<!-- ROW 1 -->
 	  <LinearLayout
 	  android:layout_width="fill_parent"

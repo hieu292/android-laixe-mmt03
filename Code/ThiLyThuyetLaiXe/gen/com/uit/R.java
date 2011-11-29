@@ -47,10 +47,11 @@ public final class R {
         public static final int btnThiThu=0x7f050002;
         public static final int btnXemKetQua=0x7f050003;
         public static final int gridviewChonDeLuyenThi=0x7f050004;
-        public static final int m_btnAccount=0x7f050009;
-        public static final int m_btnStatistic=0x7f050008;
-        public static final int m_btnTest=0x7f050007;
-        public static final int m_btnTrain=0x7f050006;
+        public static final int m_btnAccount=0x7f05000a;
+        public static final int m_btnStatistic=0x7f050009;
+        public static final int m_btnTest=0x7f050008;
+        public static final int m_btnTrain=0x7f050007;
+        public static final int m_txtEditUser=0x7f050006;
         public static final int m_txtUsername=0x7f050005;
         public static final int textViewUserName=0x7f050000;
     }
