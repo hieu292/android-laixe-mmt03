@@ -1,150 +1,143 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent"
-  android:orientation="vertical"
-  android:background="@drawable/m_brg"
-  >
-  	<TextView 
-  	    android:id="@+id/m_txtUsername"
-  	    android:layout_width="fill_parent"
-  	    android:layout_height="wrap_content"
-  	    android:gravity="center_horizontal"
-  	    android:textSize="25sp"
-  	    android:textColor="#000000"
-  	    android:textStyle="bold"/>
-  	<TextView 
-  	    android:id="@+id/m_txtEditUser"
-  	    android:layout_width="wrap_content"
-  	    android:layout_height="wrap_content"
-  	    android:text="Not me, Click here"
-  	    android:layout_marginTop="5dp"
-  	    android:textSize="15sp"
-  	    android:layout_gravity="center"/>
-  	<!-- ROW 1 -->
-	  <LinearLayout
-	  android:layout_width="fill_parent"
-	  android:layout_height="wrap_content"
-	  android:orientation="horizontal"
-	  android:gravity="center"
-	  >
-				  <LinearLayout
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-					  android:orientation="vertical"
-					  android:gravity="center">
-			  	
-				  	<ImageButton
-				  		android:id="@+id/m_btnTrain"
-				    	android:layout_width="wrap_content"
-				  		android:layout_height="wrap_content"
-				  		android:layout_marginLeft="20dip"
-				  		android:layout_marginTop="20dip"
-				  		android:layout_marginRight="20dip"
-				  		android:layout_marginBottom="5dip"
-				  		android:background="@drawable/m_button_style"
-				  		android:src="@drawable/m_icon_train"
-				  	/>
-				  	<TextView
-				  		
-				    	android:layout_width="wrap_content"
-				  		android:layout_height="wrap_content"
-				  		android:text="Training"
-				  		android:textColor="#000"				  		
-				  		android:textSize="17dp"				  		
-				  	/>
-				  </LinearLayout>
-				  
-			  	<LinearLayout
-				  
-				  android:layout_width="wrap_content"
-				  android:layout_height="wrap_content"
-				  android:orientation="vertical"
-				  android:gravity="center"
-				  >
-			  	
-				  	<ImageButton
-				  		android:id="@+id/m_btnTest"
-				    	android:layout_width="wrap_content"
-				  		android:layout_height="wrap_content"
-				  		android:layout_marginLeft="20dip"
-				  		android:layout_marginTop="20dip"
-				  		android:layout_marginRight="20dip"
-				  		android:layout_marginBottom="5dip"
-				  		android:background="@drawable/m_button_style"
-				  		android:src="@drawable/m_icon_test"
-				  	/>
-				  	<TextView
-				    	android:layout_width="wrap_content"
-				  		android:layout_height="wrap_content"
-				  		android:text="Test"
-				  		android:textColor="#000"
-				  		android:textSize="17dp"
-				  	/>
-				  </LinearLayout>
-  	</LinearLayout>
-  	
-  	<!-- ROW 2 -->
-  	<LinearLayout
-	  android:layout_width="fill_parent"
-	  android:layout_height="wrap_content"
-	  android:orientation="horizontal"
-	  android:gravity="center"
-	  >
-				  <LinearLayout
-					  android:layout_width="wrap_content"
-					  android:layout_height="wrap_content"
-					  android:orientation="vertical"
-					  android:gravity="center">
-			  	
-				  	<ImageButton
-				  		android:id="@+id/m_btnStatistic"
-				    	android:layout_width="wrap_content"
-				  		android:layout_height="wrap_content"
-				  		android:layout_marginLeft="20dip"
-				  		android:layout_marginTop="20dip"
-				  		android:layout_marginRight="20dip"
-				  		android:layout_marginBottom="5dip"
-				  		android:background="@drawable/m_button_style"
-				  		android:src="@drawable/m_icon_statistic"
-				  	/>
-				  	<TextView
-				  		
-				    	android:layout_width="wrap_content"
-				  		android:layout_height="wrap_content"
-				  		android:text="Statistic"
-				  		android:textColor="#000"
-				  		android:textSize="17dp"
-				  	/>
-				  </LinearLayout>
-				  
-			  	<LinearLayout
-				  
-				  android:layout_width="wrap_content"
-				  android:layout_height="wrap_content"
-				  android:orientation="vertical"
-				  android:gravity="center"
-				  >
-			  	
-				  	<ImageButton
-				  		android:id="@+id/m_btnAccount"
-				    	android:layout_width="wrap_content"
-				  		android:layout_height="wrap_content"
-				  		android:layout_marginLeft="20dip"
-				  		android:layout_marginTop="20dip"
-				  		android:layout_marginRight="20dip"
-				  		android:layout_marginBottom="5dip"
-				  		android:background="@drawable/m_button_style"
-				  		android:src="@drawable/m_icon_account"
-				  	/>
-				  	<TextView
-				    	android:layout_width="wrap_content"
-				  		android:layout_height="wrap_content"
-				  		android:text="Account"
-				  		android:textColor="#000"
-				  		android:textSize="17dp"
-				  	/>
-				  </LinearLayout>
-  	</LinearLayout>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/m_brg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/m_txtUsername"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/m_txtEditUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:text="Not me, Click here"
+        android:textSize="15sp" />
+    <!-- ROW 1 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/m_btnTrain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/m_button_style"
+                android:src="@drawable/m_icon_train" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Training"
+                android:textColor="#000"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/m_btnTest"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/m_button_style"
+                android:src="@drawable/m_icon_test" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Test"
+                android:textColor="#000"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ROW 2 -->
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/m_btnStatistic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/m_button_style"
+                android:src="@drawable/m_icon_statistic" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Statistic"
+                android:textColor="#000"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/m_btnAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/m_button_style"
+                android:src="@drawable/m_icon_account" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Account"
+                android:textColor="#000"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
 </LinearLayout>
