@@ -57,5 +57,6 @@
         
          <activity android:name=".UI.AccountActivity"></activity>
          <activity android:name=".UI.TrainActivity"></activity>
+         <activity android:name=".UI.ThongKeActivity"></activity>
     </application>
 </manifest>

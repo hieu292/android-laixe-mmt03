@@ -99,6 +99,8 @@ public class Person {
 		return mCursor;
 	}
 	
+	
+	
 	//retrieves a particular user by name
 	public Cursor getUser(String name) throws SQLException{
 		Cursor mCursor = 

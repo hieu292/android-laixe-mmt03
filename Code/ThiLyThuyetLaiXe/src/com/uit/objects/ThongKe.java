@@ -4,11 +4,8 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
-import android.database.sqlite.SQLiteCursor;
-import android.database.sqlite.SQLiteCursorDriver;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.database.sqlite.SQLiteQuery;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -39,6 +36,7 @@ public class ThongKe {
 	
 	//constructor
 	public ThongKe(Context _context){
+		super();
 		this.context = _context;
 		DBHelper = new DatabaseHelper(context);
 		
@@ -122,43 +120,10 @@ public class ThongKe {
 	
 	//Truy van 10 nguoi thi tot nhat
 	public Cursor getTenRows() throws SQLException{
-		String QUERY =
-	            "SELECT " + KEY_ROWID + ", " 
-	            		  + "users." + KEY_USERNAME + ", " 
-	            		  + KEY_NGAYGIOTHI + ", " 
-	            		  + KEY_THOIGIANHOANTHANH + ", " 
-	            		  + KEY_KETQUA +
-	            "FROM users, thongke "+
-	            "WHERE users.id = thongke.userid "+
-	            "ORDER BY " + KEY_KETQUA + " DESC AND " + KEY_THOIGIANHOANTHANH + " ASC";
-		
-		
-        ThongKeCursor c = (ThongKeCursor) db.rawQueryWithFactory(
-            new ThongKeCursor.Factory(),
-            QUERY,
-            null,
-            null);
-        c.moveToFirst();
-        return c;
-
+		return db.query(DATABASE_TABLE, new String[] {KEY_USERID, KEY_NGAYGIOTHI, KEY_THOIGIANHOANTHANH, KEY_KETQUA}, null, null, null, null, KEY_KETQUA + " DESC");
 	}
 
 	
-	//class ThongKuCursor tra ve cac ket qua duoc sap xep tu cao xuong thap 
-	public static class ThongKeCursor extends SQLiteCursor{
-		public ThongKeCursor(SQLiteDatabase db, SQLiteCursorDriver driver,
-				String editTable, SQLiteQuery query) {
-			super(db, driver, editTable, query);
-			// TODO Auto-generated constructor stub
-		}
-
-		private static class Factory implements SQLiteDatabase.CursorFactory{
-	        public Cursor newCursor(SQLiteDatabase db,
-	                SQLiteCursorDriver driver, String editTable,
-	                SQLiteQuery query) {
-	            return new ThongKeCursor(db, driver, editTable, query);
-	        }
-	    }		
-    }
+	
 
 }
