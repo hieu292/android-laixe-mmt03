@@ -18,7 +18,7 @@ public class Person {
 	private static final int DATABASE_VERSION = 1;
 	
 	private static final String DATABASE_CREATE = 
-			"create table users (_id integer primary key autoincrement, "
+			"create table users (id integer primary key autoincrement, "
 			+ "name text not null);";
 	
 	private final Context context;

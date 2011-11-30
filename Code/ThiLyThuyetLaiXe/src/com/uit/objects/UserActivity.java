@@ -75,7 +75,7 @@ public class UserActivity {
 		
 		final Person p = new Person(context);
 		if(username == null){
-			result = "Vui lòng ch�?n tài khoản";
+			result = "Vui lòng chọn tài khoản";
 		}
 		else{					
 			int id = -1;
