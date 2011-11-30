@@ -18,7 +18,7 @@ import com.uit.objects.UserActivity;
 
 public class BaseActivity extends Activity {
 
-	ImageButton btnTrain, btnAccount;
+	ImageButton btnTrain, btnAccount, btnThongKe;
 	TextView txtUsername, txtEditUser;
 
 	/** Called when the activity is first created. */
@@ -30,7 +30,8 @@ public class BaseActivity extends Activity {
 		btnTrain = (ImageButton) findViewById(R.id.m_btnTrain);
 		btnAccount = (ImageButton) findViewById(R.id.m_btnAccount);
 		txtEditUser = (TextView) findViewById(R.id.m_txtEditUser);
-
+		btnThongKe = (ImageButton)findViewById(R.id.m_btnStatistic);
+		
 		checkLogin();
 
 		txtEditUser.setOnClickListener(new View.OnClickListener() {
@@ -54,6 +55,15 @@ public class BaseActivity extends Activity {
 			
 			public void onClick(View v) {
 				Intent i = new Intent(BaseActivity.this, TrainActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		btnThongKe.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(BaseActivity.this, ThongKeActivity.class);
 				startActivity(i);
 			}
 		});
