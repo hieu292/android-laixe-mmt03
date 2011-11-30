@@ -1,16 +1,20 @@
 package com.uit;
 
-import objects.Person;
-import objects.UserActivity;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.uit.R;
+import com.uit.objects.Person;
+import com.uit.objects.UserActivity;
 
 public class AccountActivity extends Activity {
 
@@ -21,13 +25,16 @@ public class AccountActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.account);
-
+		
 		txtUsername = (TextView) findViewById(R.id.a_txtUsername);
 		btnAdd = (ImageButton) findViewById(R.id.a_btnAdd);
 		btnDel = (ImageButton) findViewById(R.id.a_btnDel);
 		btnChange = (ImageButton) findViewById(R.id.a_btnChange);
 		btnEdit = (ImageButton) findViewById(R.id.a_btnEdit);
-
+		
+		String username = getIntent().getExtras().getString(UserActivity.ACCOUNT);
+		txtUsername.setText(username);
+		
 		btnAdd.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -56,6 +63,16 @@ public class AccountActivity extends Activity {
 			}
 		});
 	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			Intent i = new Intent(AccountActivity.this, BaseActivity.class);
+			startActivity(i);
+			finish();
+		}
+		return super.onKeyDown(keyCode, event);
+	}
 
 	public void createAddUserDialog() {
 		final EditText input = new EditText(this);
@@ -68,7 +85,7 @@ public class AccountActivity extends Activity {
 				String username = input.getText().toString().trim();
 				UserActivity user = new UserActivity(getBaseContext());
 				String result = user.AddUser(username);
-				if (result.equals("Thêm tài khoản thành công!")) {
+				if (result.equals("ThÃªm tÃ i khoáº£n thÃ nh cÃ´ng!")) {
 					txtUsername.setText(username);
 					user.storeInformation(username);
 					dialog.dismiss();
@@ -97,7 +114,7 @@ public class AccountActivity extends Activity {
 	public void CreateDelUserDialog() {
 		final String username = txtUsername.getText().toString();
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setTitle("Bạn có chắc chắn muốn xóa tài khoản " + username);
+		builder.setTitle("Bạn chắc chắn muốn xóa tài khoản " + username);
 		builder.setPositiveButton("Delete",
 				new DialogInterface.OnClickListener() {
 
@@ -109,7 +126,7 @@ public class AccountActivity extends Activity {
 							if (ListUser().length == 0) {
 								user.removeSaveInfo();
 								createAddUserDialog();
-								result = "Không có tài khoản nào được chọn, tạo tài khoản mới!";
+								result = "Không tồn tại tài khoản nào. Tạo tài khoản mới!";
 							} else {
 								CreateChangeUserDialog();
 							}

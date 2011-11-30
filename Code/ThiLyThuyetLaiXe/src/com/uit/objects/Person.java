@@ -18,7 +18,7 @@ public class Person {
 	private static final int DATABASE_VERSION = 1;
 	
 	private static final String DATABASE_CREATE = 
-			"create table users (_id integer primary key autoincrement, "
+			"create table users (id integer primary key autoincrement, "
 			+ "name text not null);";
 	
 	private final Context context;
@@ -80,7 +80,7 @@ public class Person {
 	}
 
 	//delete a particular user
-	public boolean deleteUser(long rowId){
+	public boolean deleteUser(int rowId){
 		return db.delete(DATABASE_TABLE, KEY_ROWID + "=" + rowId, null) > 0;
 	}
 
@@ -90,7 +90,7 @@ public class Person {
 	}
 	
 	//retrieves a particular user by rowId
-	public Cursor getUser(long rowId) throws SQLException{
+	public Cursor getUser(int rowId) throws SQLException{
 		Cursor mCursor = 
 				db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME}, KEY_ROWID + "=" + rowId, null, null, null, null, null);
 		if(mCursor != null){
@@ -98,9 +98,19 @@ public class Person {
 		}
 		return mCursor;
 	}
+	
+	//retrieves a particular user by name
+	public Cursor getUser(String name) throws SQLException{
+		Cursor mCursor = 
+				db.query(true, DATABASE_TABLE, new String[] {KEY_ROWID, KEY_NAME}, KEY_NAME + "like" + name, null, null, null, null, null);
+		if(mCursor != null){
+			mCursor.moveToFirst();			
+		}
+		return mCursor;
+	}
 
 	//update a user
-	public boolean updateUser(long rowId, String name, String email){
+	public boolean updateUser(int rowId, String name, String email){
 		ContentValues args = new ContentValues();
 		args.put(KEY_NAME, name);		
 		return db.update(DATABASE_TABLE, args, KEY_ROWID + "=" + rowId, null) > 0;

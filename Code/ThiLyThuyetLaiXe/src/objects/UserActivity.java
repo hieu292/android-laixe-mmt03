@@ -37,14 +37,14 @@ public class UserActivity {
         	do{
         		//check name is not null
         		if(username == null || username.equals("")){
-        			result = "Tên tài khoản không thể để trống";
+        			result = "Nhập vào tên tài khoản!";
         			ok = false;
         			break;
         		}
         		//check name is not exists in database
         		if(user.CheckName(c, username))
         		{
-        			result = "Tên tài khoản đã tồn tại";
+        			result = "Tài khoản này đã tồn tại!";
         			ok = false;
         			break;
         		}
@@ -62,7 +62,7 @@ public class UserActivity {
 			if(i != -1)
 				result =  "Thêm tài khoản thành công!";
 			else
-				result = "Thêm tài khoản thất bại";
+				result = "Thêm tài khoản thất bại!";
 		}
 		
 		//close adapter
@@ -75,7 +75,7 @@ public class UserActivity {
 		
 		final Person p = new Person(context);
 		if(username == null){
-			result = "Vui lòng chọn tài khoản";
+			result = "Vui lòng chọn tài khoản!";
 		}
 		else{					
 			int id = -1;
@@ -91,7 +91,7 @@ public class UserActivity {
 			}
 			//if don't exists username entered in database, warning!
 			if(id == -1){
-				result = "Không tồn tại tài khoản này trong cơ sở dữ liệu";
+				result = "Không tồn tại tài khoản này trong cơ sở dữ liệu!";
 			}
 			else
 			{
@@ -103,9 +103,7 @@ public class UserActivity {
 		}		
 		return result;
 	}
-	/**
-	 * 
-	 */
+	
 	public void OpenDatabase() {
 		try{
 			String destPath = "/data/data/" + context.getPackageName() + 
@@ -140,8 +138,7 @@ public class UserActivity {
 		SharedPreferences account = context.getSharedPreferences(ACCOUNT, 0);
 		SharedPreferences.Editor editor = account.edit();
 		editor.putString(NAME, username);
-		editor.commit();
-		
+		editor.commit();		
 	}
 	
 	public void removeSaveInfo(){
@@ -149,12 +146,6 @@ public class UserActivity {
 		SharedPreferences.Editor editor = account.edit();
 		editor.remove(ACCOUNT);
 		editor.commit();
-	}
-//	// function to display user from cursor
-//	public void DisplayContact(Cursor c) {
-//		Toast.makeText(
-//				this,
-//				"ID: " + c.getInt(0) + "\n" + "Name: " + c.getString(1) + "\n"
-//						+ "Email: " + c.getString(2), Toast.LENGTH_LONG).show();
-//	}
+	}	
+
 }
