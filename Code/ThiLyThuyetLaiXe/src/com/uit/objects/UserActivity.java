@@ -1,12 +1,6 @@
 package com.uit.objects;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
+import Providers.Person;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -26,8 +20,7 @@ public class UserActivity {
 	}
 
 	public String AddUser(String username){
-		String result = "";
-		OpenDatabase();
+		String result = "";		
 		boolean ok = true; //check name is true and don't exists
 		
 		//get all users
@@ -103,38 +96,8 @@ public class UserActivity {
 		}		
 		return result;
 	}
-	/**
-	 * 
-	 */
-	public void OpenDatabase() {
-		try{
-			String destPath = "/data/data/" + context.getPackageName() + 
-    			"/databases/lythuyetlaixe";
-			File f = new File(destPath);
-			if(!f.exists()){
-				CopyDB(context.getAssets().open("lythuyetlaixe"), 
-    				new FileOutputStream(destPath));    
-			}
-		}
-	    catch(FileNotFoundException e){
-	    	e.printStackTrace();
-	    }
-	    catch(IOException e){
-	    	e.printStackTrace();
-	    }        	
-	}
-
-	public void CopyDB(InputStream inputStream, OutputStream outputStream)
-			throws IOException {
-		// copy 1k bytes at a time
-		byte[] buffer = new byte[1024];
-		int length;
-		while ((length = inputStream.read(buffer)) > 0) {
-			outputStream.write(buffer, 0, length);
-		}
-		inputStream.close();
-		outputStream.close();
-	}
+	
+	
 
 	public void storeInformation(String username) {
 		SharedPreferences account = context.getSharedPreferences(ACCOUNT, 0);
@@ -150,11 +113,45 @@ public class UserActivity {
 		editor.remove(ACCOUNT);
 		editor.commit();
 	}
-//	// function to display user from cursor
-//	public void DisplayContact(Cursor c) {
-//		Toast.makeText(
-//				this,
-//				"ID: " + c.getInt(0) + "\n" + "Name: " + c.getString(1) + "\n"
-//						+ "Email: " + c.getString(2), Toast.LENGTH_LONG).show();
-//	}
+	
+	/**
+	 * function query list of username from database after click button delete
+	 * @param _context
+	 * @return
+	 */
+  	public String[] getListofUserName(Context _context)
+  	{
+  		
+  		//create a Person instance
+  		Person user = new Person(_context);
+  		user.open();
+  		
+  		Cursor c = user.getAllUsers();
+  		int count = c.getCount();
+  		//Toast.makeText(getBaseContext(), ((Integer)count).toString(), Toast.LENGTH_SHORT).show();
+  		int index = 0;
+  		String[] result = new String[count];
+  		if(c.moveToFirst()){		
+  			do{
+  				//add name to list String
+  				result[index++] = c.getString(1).toString();				
+  			}while(c.moveToNext());
+  		}		
+  		user.close();
+  		
+  		return result;
+  	}
+  	
+  /**
+   * function to check name of user
+   * @param c
+   * @param _name
+   * @return
+   */
+    public boolean CheckName(Cursor c, String _name){
+    	String str = c.getString(1);
+    	if(str.equals(_name))
+    		return true;    	return false;
+    }
+
 }

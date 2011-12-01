@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uit.R;
-import com.uit.objects.Person;
 import com.uit.objects.UserActivity;
 
 public class BaseActivity extends Activity {
@@ -115,10 +114,10 @@ public class BaseActivity extends Activity {
 	}
 
 	public void CreateUserDialog() {
-		Person p = new Person(this);
+		UserActivity user = new UserActivity(this);
 		// String[] usernames is a list of username query from database
 		final String[] listUser;
-		listUser = p.getListofUserName(this);
+		listUser = user.getListofUserName(this);
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setSingleChoiceItems(listUser, 0, null);
 		builder.setTitle("Choose your Name...");

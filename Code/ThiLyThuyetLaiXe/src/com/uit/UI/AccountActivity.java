@@ -1,5 +1,6 @@
 package com.uit.UI;
 
+import Providers.Person;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,7 +14,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uit.R;
-import com.uit.objects.Person;
 import com.uit.objects.UserActivity;
 
 public class AccountActivity extends Activity {
@@ -186,9 +186,9 @@ public class AccountActivity extends Activity {
 
 	private String[] ListUser() {
 		String[] listUser;
-		Person p = new Person(this);
+		UserActivity u = new UserActivity(this);
 		// String[] usernames is a list of username query from database
-		listUser = p.getListofUserName(this);
+		listUser = u.getListofUserName(this);
 		return listUser;
 
 	}
