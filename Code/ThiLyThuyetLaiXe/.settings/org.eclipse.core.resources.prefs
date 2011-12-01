@@ -1,8 +1,10 @@
-#Thu Dec 01 02:52:57 ICT 2011
+#Thu Dec 01 14:08:21 ICT 2011
 eclipse.preferences.version=1
-encoding//src/com/uit/BaseActivity.java=UTF-8
+encoding//src/Providers/CauHoi.java=UTF-8
+encoding//src/Providers/XepLoai.java=UTF-8
 encoding//src/com/uit/UI/AccountActivity.java=UTF-8
 encoding//src/com/uit/UI/BaseActivity.java=UTF-8
+encoding//src/com/uit/UI/CauHoiHaySai.java=UTF-8
 encoding//src/com/uit/UI/ThongKeActivity.java=UTF-8
-encoding//src/com/uit/objects/ThongKe.java=UTF-8
+encoding//src/com/uit/UI/XepLoaiTop.java=UTF-8
 encoding//src/com/uit/objects/UserActivity.java=UTF-8

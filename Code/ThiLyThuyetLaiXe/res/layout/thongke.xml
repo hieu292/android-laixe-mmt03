@@ -4,8 +4,11 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-<TextView android:text="Danh sách kết quả thi tốt nhất." android:layout_width="fill_parent" android:layout_height="wrap_content" android:textSize="15dp" android:gravity="center"/>
+<Button android:id="@+id/btnXepLoaiTop" android:text="Xếp loại Top" android:textSize="15dp"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"/>
 
+<Button android:id="@+id/btnThongKeCauHoiHaySai" android:text="Các câu hỏi hay sai" android:textSize="15dp"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"/>
 
 
 </LinearLayout>
