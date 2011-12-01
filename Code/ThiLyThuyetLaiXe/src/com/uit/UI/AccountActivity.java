@@ -1,6 +1,5 @@
 package com.uit.UI;
 
-import Providers.Person;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
