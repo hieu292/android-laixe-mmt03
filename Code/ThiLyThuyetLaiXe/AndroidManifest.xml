@@ -25,5 +25,6 @@
          <activity android:name=".UI.ThongKeActivity"></activity>
          <activity android:name=".UI.XepLoaiTop"></activity>
          <activity android:name=".UI.CauHoiHaySai"></activity>
+         <activity android:name=".UI.ThongKeActivity"></activity>
     </application>
 </manifest>
