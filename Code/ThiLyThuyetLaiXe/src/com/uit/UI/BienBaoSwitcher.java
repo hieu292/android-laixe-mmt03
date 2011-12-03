@@ -22,10 +22,10 @@ import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import com.uit.R;
-import com.uit.Objects.PopupMenuItem;
-import com.uit.Objects.BienBao;
 import com.uit.Providers.BienBaoDB;
 import com.uit.Providers.HashmapDB;
+import com.uit.objects.BienBao;
+import com.uit.objects.PopupMenuItem;
 
 public class BienBaoSwitcher extends Activity implements
 		AdapterView.OnItemSelectedListener, ViewSwitcher.ViewFactory {

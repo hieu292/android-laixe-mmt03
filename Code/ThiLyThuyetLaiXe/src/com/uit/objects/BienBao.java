@@ -1,4 +1,4 @@
-package com.uit.Objects;
+package com.uit.objects;
 
 public class BienBao {
 	public int id;

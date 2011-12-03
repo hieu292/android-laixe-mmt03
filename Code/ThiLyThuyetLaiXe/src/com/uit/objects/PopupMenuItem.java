@@ -1,4 +1,4 @@
-package com.uit.Objects;
+package com.uit.objects;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
