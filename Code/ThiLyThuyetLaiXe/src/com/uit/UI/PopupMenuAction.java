@@ -19,8 +19,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.uit.R;
-import com.uit.Objects.PopupMenuItem;
-import com.uit.Objects.PopupWindows;
+import com.uit.objects.PopupMenuItem;
+import com.uit.objects.PopupWindows;
 
 /**
  * QuickAction dialog, shows action list as icon and text like the one in

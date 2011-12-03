@@ -2,8 +2,8 @@ package com.uit.Providers;
 
 import java.util.ArrayList;
 
-import com.uit.Objects.BienBao;
 import com.uit.UI.BienBaoSwitcher;
+import com.uit.objects.BienBao;
 
 import android.content.Context;
 import android.database.Cursor;

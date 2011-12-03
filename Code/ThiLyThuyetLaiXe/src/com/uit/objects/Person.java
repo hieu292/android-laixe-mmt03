@@ -1,4 +1,4 @@
-package com.uit.Objects;
+package com.uit.objects;
 
 import android.content.ContentValues;
 import android.content.Context;

@@ -12,7 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.uit.R;
-import com.uit.Objects.BienBao;
+import com.uit.objects.BienBao;
 
 public class BienBaoAdapter extends BaseAdapter {
 	Context c;

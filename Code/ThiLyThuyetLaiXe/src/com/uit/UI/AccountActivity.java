@@ -13,7 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uit.R;
-import com.uit.Objects.UserAction;
+import com.uit.objects.UserAction;
 
 public class AccountActivity extends Activity {
 
