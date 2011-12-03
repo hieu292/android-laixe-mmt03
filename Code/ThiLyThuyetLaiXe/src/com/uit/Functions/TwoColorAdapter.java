@@ -38,7 +38,7 @@ public class TwoColorAdapter extends ArrayAdapter<String> {
 		View rowView = convertView;
 		if (rowView == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
-			rowView = inflater.inflate(R.layout.thongkecauhoihaysai, null, true);
+			rowView = inflater.inflate(R.layout.activity_thongke_content, null, true);
 			holder = new ViewHolder();
 			holder.textView = (TextView) rowView.findViewById(R.id.t_txtThongKe);
 			rowView.setTag(holder);

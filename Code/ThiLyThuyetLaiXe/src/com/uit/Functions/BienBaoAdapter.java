@@ -64,7 +64,7 @@ public class BienBaoAdapter extends BaseAdapter {
 	public View getView(int paramInt, View paramView, ViewGroup paramViewGroup) {
 		BienBao localItemBienbao = (BienBao) this.list_bienbao.get(paramInt
 				+ this.start);
-		View localView = this.li.inflate(R.layout.bienbao_gridview,
+		View localView = this.li.inflate(R.layout.activity_bienbao_gridview,
 				paramViewGroup, false);
 		this.image = ((ImageView) localView
 				.findViewById(R.id.bienbao_grid_item_hinhanh));

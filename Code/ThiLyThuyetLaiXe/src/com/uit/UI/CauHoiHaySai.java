@@ -58,7 +58,7 @@ public class CauHoiHaySai extends ListActivity {
 			} while (c.moveToNext() && index < 30);
 		}
 		ch.close();
-		setListAdapter(new TwoColorAdapter(this, R.layout.thongkecauhoihaysai,
+		setListAdapter(new TwoColorAdapter(this, R.layout.activity_thongke_content,
 				noidung));
 
 		final int temp = index;

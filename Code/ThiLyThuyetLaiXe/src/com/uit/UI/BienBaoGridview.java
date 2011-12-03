@@ -25,7 +25,7 @@ public class BienBaoGridview extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.bienbao_main);
+		setContentView(R.layout.activity_bienbao_main);
 		gridview = (GridView) findViewById(R.id.grid_bienbao);
 
 		// get data from database
