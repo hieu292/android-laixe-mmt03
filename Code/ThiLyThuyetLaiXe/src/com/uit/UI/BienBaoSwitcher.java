@@ -47,7 +47,7 @@ public class BienBaoSwitcher extends Activity implements
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 
-		setContentView(R.layout.bienbao_switcher);
+		setContentView(R.layout.activity_bienbao_switcher);
 
 		map = new HashmapDB().getMap();
 		list_bienbao = new BienBaoDB(this).get_list_bienbao(ID_ALL);

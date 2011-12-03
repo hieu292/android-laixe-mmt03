@@ -30,7 +30,7 @@ public class ThongKeActivity extends ActivityGroup  {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.thongke);
+		setContentView(R.layout.activity_thongke);
 
 		setupTabHost();
 		//mTabHost.getTabWidget().setDividerDrawable(R.drawable.tab_divider);
@@ -53,7 +53,7 @@ public class ThongKeActivity extends ActivityGroup  {
 	}
 
 	private static View createTabView(final Context context, final String text, final int icon) {
-		View view = LayoutInflater.from(context).inflate(R.layout.thongke_tab, null);
+		View view = LayoutInflater.from(context).inflate(R.layout.activity_thongke_tab, null);
 		TextView tv = (TextView) view.findViewById(R.id.tabsText);
 		ImageView img = (ImageView) view.findViewById(R.id.tabsIcon);
 		tv.setText(text);

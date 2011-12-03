@@ -164,9 +164,9 @@ public class PopupMenuAction extends PopupWindows implements OnDismissListener {
 
 		if (mOrientation == HORIZONTAL) {
 			container = mInflater
-					.inflate(R.layout.action_item_horizontal, null);
+					.inflate(R.layout.popup_item_horizontal, null);
 		} else {
-			container = mInflater.inflate(R.layout.action_item_vertical, null);
+			container = mInflater.inflate(R.layout.popup_item_vertical, null);
 		}
 
 		ImageView img = (ImageView) container.findViewById(R.id.iv_icon);
@@ -206,7 +206,7 @@ public class PopupMenuAction extends PopupWindows implements OnDismissListener {
 		container.setClickable(true);
 
 		if (mOrientation == HORIZONTAL && mChildPos != 0) {
-			View separator = mInflater.inflate(R.layout.horiz_separator, null);
+			View separator = mInflater.inflate(R.layout.popup_horizontal_separator, null);
 
 			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT);
@@ -218,13 +218,13 @@ public class PopupMenuAction extends PopupWindows implements OnDismissListener {
 
 			mInsertPos++;
 		}else{
-			View separator = mInflater.inflate(R.layout.horiz_separator, null);
+			View separator = mInflater.inflate(R.layout.popup_vertical_separator, null);
 
 			RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.FILL_PARENT);
 
 			separator.setLayoutParams(params);
-			separator.setPadding(3, 1, 3, 1);
+			separator.setPadding(0, 4, 0, 4);
 
 			mTrack.addView(separator, mInsertPos);
 

@@ -17,7 +17,7 @@ public class WelcomeScreen extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.layout_splash_screen);
+		setContentView(R.layout.splash_screen);
 		
 		 MainCountDown countdown = new MainCountDown(3000, 3000);
 	     countdown.start();
