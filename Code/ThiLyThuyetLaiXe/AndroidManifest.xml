@@ -21,10 +21,12 @@
         </activity>		
         
          <activity android:name=".UI.AccountActivity"></activity>
-         <activity android:name=".UI.TrainActivity"></activity>
+         <activity android:name=".UI.HocTapActivity"></activity>
          <activity android:name=".UI.ThongKeActivity"></activity>
-         <activity android:name=".UI.XepLoaiTop"></activity>
+         <activity android:name=".UI.XepLoaiActivity"></activity>
          <activity android:name=".UI.CauHoiHaySai"></activity>
          <activity android:name=".UI.ThongKeActivity"></activity>
+         <activity android:name=".UI.BienBaoGridview"></activity>
+         <activity android:name=".UI.BienBaoSwitcher"></activity>
     </application>
 </manifest>

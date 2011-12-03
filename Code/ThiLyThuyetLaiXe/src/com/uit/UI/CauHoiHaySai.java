@@ -1,6 +1,5 @@
 package com.uit.UI;
 
-import Providers.CauHoi;
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.content.DialogInterface;
@@ -13,6 +12,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.uit.R;
+import com.uit.Functions.TwoColorAdapter;
+import com.uit.Providers.CauHoi;
 
 /*
  * Purpose....

@@ -1,6 +1,5 @@
 package com.uit.UI;
 
-import Providers.Database;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -14,7 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uit.R;
-import com.uit.objects.UserActivity;
+import com.uit.Objects.UserAction;
+import com.uit.Providers.Database;
 
 public class BaseActivity extends Activity {
 
@@ -33,13 +33,13 @@ public class BaseActivity extends Activity {
 		btnAccount = (ImageButton) findViewById(R.id.m_btnAccount);
 		btnThongKe = (ImageButton)findViewById(R.id.m_btnStatistic);
 		
-		checkLogin();
+//		checkLogin();
 		
 		btnAccount.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				Intent i = new Intent(BaseActivity.this, AccountActivity.class);
-				i.putExtra(UserActivity.ACCOUNT, txtUsername.getText().toString());
+				i.putExtra(UserAction.ACCOUNT, txtUsername.getText().toString());
 				startActivity(i);
 				finish();
 			}
@@ -48,7 +48,7 @@ public class BaseActivity extends Activity {
 		btnTrain.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
-				Intent i = new Intent(BaseActivity.this, TrainActivity.class);
+				Intent i = new Intent(BaseActivity.this, HocTapActivity.class);
 				startActivity(i);
 			}
 		});
@@ -63,8 +63,8 @@ public class BaseActivity extends Activity {
 	}
 
 	public void checkLogin() {
-		SharedPreferences account = getSharedPreferences(UserActivity.ACCOUNT, 0);
-		String username = account.getString(UserActivity.NAME, null);
+		SharedPreferences account = getSharedPreferences(UserAction.ACCOUNT, 0);
+		String username = account.getString(UserAction.NAME, null);
 		if (username == null || username.equals("")) {
 			createLoginDialog();
 		} else {
@@ -81,7 +81,7 @@ public class BaseActivity extends Activity {
 		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				String username = input.getText().toString().trim();
-				UserActivity user = new UserActivity(getBaseContext());
+				UserAction user = new UserAction(getBaseContext());
 				String result = user.AddUser(username);
 				if (result.equals("Thêm tài khoản thành công!")) {
 					txtUsername.setText(username);

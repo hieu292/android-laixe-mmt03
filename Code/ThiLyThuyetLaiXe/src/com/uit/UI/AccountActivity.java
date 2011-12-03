@@ -13,17 +13,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uit.R;
-import com.uit.objects.UserActivity;
+import com.uit.Objects.UserAction;
 
 public class AccountActivity extends Activity {
 
 	TextView txtUsername;
-	ImageButton btnAdd, btnDel, btnEdit, btnChange;
-
+	ImageButton btnAdd, btnDel, btnEdit, btnChange;public AccountActivity() {
+		// TODO Auto-generated constructor stub
+	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.account);
+		setContentView(R.layout.activity_account);
 		
 		txtUsername = (TextView) findViewById(R.id.a_txtUsername);
 		btnAdd = (ImageButton) findViewById(R.id.a_btnAdd);
@@ -31,7 +32,7 @@ public class AccountActivity extends Activity {
 		btnChange = (ImageButton) findViewById(R.id.a_btnChange);
 		btnEdit = (ImageButton) findViewById(R.id.a_btnEdit);
 		
-		String username = getIntent().getExtras().getString(UserActivity.ACCOUNT);
+		String username = getIntent().getExtras().getString(UserAction.ACCOUNT);
 		txtUsername.setText(username);
 		
 		btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +83,7 @@ public class AccountActivity extends Activity {
 		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				String username = input.getText().toString().trim();
-				UserActivity user = new UserActivity(getBaseContext());
+				UserAction user = new UserAction(getBaseContext());
 				String result = user.AddUser(username);
 				if (result.equals("Thêm tài khoản thành công!")) {
 					txtUsername.setText(username);
@@ -119,7 +120,7 @@ public class AccountActivity extends Activity {
 
 					public void onClick(DialogInterface dialog, int which) {
 						dialog.dismiss();
-						UserActivity user = new UserActivity(getBaseContext());
+						UserAction user = new UserAction(getBaseContext());
 						String result = user.DelUser(username);
 						if (result.equals("Xóa tài khoản thành công!")) {
 							if (ListUser().length == 0) {
@@ -164,7 +165,7 @@ public class AccountActivity extends Activity {
 					if (itemChecked == i) {
 						String username = listUser[i];
 						txtUsername.setText(username);
-						new UserActivity(AccountActivity.this)
+						new UserAction(AccountActivity.this)
 								.storeInformation(username);
 						dialog.dismiss();
 					}
@@ -185,7 +186,7 @@ public class AccountActivity extends Activity {
 
 	private String[] ListUser() {
 		String[] listUser;
-		UserActivity u = new UserActivity(this);
+		UserAction u = new UserAction(this);
 		// String[] usernames is a list of username query from database
 		listUser = u.getListofUserName(this);
 		return listUser;

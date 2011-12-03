@@ -1,22 +1,22 @@
-package com.uit.objects;
+package com.uit.Objects;
 
 public class BienBao {
-	public String id;
-	public String link_anh = null;
-	public String noi_dung = null;
-	public String phan_loai = null;
-	public String ten_bien_bao = null;
+	public int id;
+	public String link_anh = "";
+	public String tenbb = "";
+	public String noidung = "";
+	public String phanloai = "";
 
 	public BienBao() {
 	}
 
-	public BienBao(String id, String link_anh, String noi_dung,
-			String phan_loai, String ten_bien_bao) {
+	public BienBao(int id, String link_anh, String tenbb, String noidung,
+			String phanloai) {
 		super();
 		this.id = id;
 		this.link_anh = link_anh;
-		this.noi_dung = noi_dung;
-		this.phan_loai = phan_loai;
-		this.ten_bien_bao = ten_bien_bao;
+		this.tenbb = tenbb;
+		this.noidung = noidung;
+		this.phanloai = phanloai;
 	}
 }
