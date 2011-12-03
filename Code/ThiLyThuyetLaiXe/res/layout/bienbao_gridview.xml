@@ -4,22 +4,20 @@
 	android:layout_width="wrap_content"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
-	android:gravity="center_horizontal"
-	android:background="#000080">
+	android:background="#000000">
 	
 	<ImageView
-		android:id="@+id/bienbao_grid_item_image"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content">
+		android:id="@+id/bienbao_grid_item_hinhanh"
+		android:layout_width="80dp"
+		android:layout_height="80dp">
 	</ImageView>
 	
 	<TextView
-		android:id="@+id/bienbao_grid_item_text"
-		android:layout_width="wrap_content"
+		android:id="@+id/bienbao_grid_item_noidung"
+		android:layout_width="80dp"
 		android:layout_height="wrap_content"
 		android:text="TextView"
-		android:gravity="center_horizontal"
-		android:textColor="#000000">
+		android:gravity="center_horizontal">
 	</TextView>
 	
 </LinearLayout>

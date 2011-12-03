@@ -37,7 +37,7 @@ public class ThongKeActivity extends ActivityGroup  {
 
 		Intent intent;
 		
-		intent = new Intent(this, XepLoaiTop.class);
+		intent = new Intent(this, XepLoaiActivity.class);
 		setupTab(intent, new TextView(this), "Xếp loại", R.drawable.t_icon_top);
 
 		intent = new Intent().setClass(this, CauHoiHaySai.class);

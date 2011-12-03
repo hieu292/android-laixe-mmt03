@@ -33,7 +33,7 @@
             android:layout_marginRight="15dp">
 
             <ImageButton
-                android:id="@+id/t_btnAdd"
+                android:id="@+id/t_btnBB"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/a_button_add_style"
