@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,17 +30,11 @@ import com.uit.objects.PopupMenuItem;
 
 public class BienBaoSwitcher extends Activity implements
 		AdapterView.OnItemSelectedListener, ViewSwitcher.ViewFactory {
-	public static final int ID_ALL = 0;
-	public static final int ID_CAM = 1;
-	public static final int ID_CHIDAN = 2;
-	public static final int ID_HIEULENH = 3;
-	public static final int ID_NGUYHIEM = 4;
 	PopupMenuAction quickAction;
-
 	HashMap<String, Integer> map = null;
 	ArrayList<BienBao> list_bienbao;
 	TextView txtTenBB, txtNoidung;
-	Button btnMenu;
+	Button btnMenu, btnChangeView;
 	Gallery g;
 
 	@Override
@@ -49,12 +44,13 @@ public class BienBaoSwitcher extends Activity implements
 
 		setContentView(R.layout.activity_bienbao_switcher);
 
-		map = new HashmapDB().getMap();
-		list_bienbao = new BienBaoDB(this).get_list_bienbao(ID_ALL);
+		map = new HashmapDB().getMapBienBao();
+		list_bienbao = new BienBaoDB(this).get_list_bienbao(BienBaoDB.ID_ALL);
 
 		txtTenBB = (TextView) findViewById(R.id.switch_tenbb);
 		txtNoidung = (TextView) findViewById(R.id.switch_noidung);
 		btnMenu = (Button) findViewById(R.id.switch_btnMenu);
+		btnChangeView = (Button) findViewById(R.id.switch_btnChangeView);
 		mSwitcher = (ImageSwitcher) findViewById(R.id.switcher);
 		mSwitcher.setFactory(this);
 		mSwitcher.setInAnimation(AnimationUtils.loadAnimation(this,
@@ -66,7 +62,9 @@ public class BienBaoSwitcher extends Activity implements
 		g.setAdapter(new ImageAdapter(this, 0, list_bienbao.size() - 1,
 				list_bienbao, map));
 		g.setOnItemSelectedListener(this);
-		inti();
+
+		quickAction = createPopupMenuBB(getApplicationContext());
+		setMenuAction();
 		btnMenu.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
@@ -74,14 +72,24 @@ public class BienBaoSwitcher extends Activity implements
 				// quickAction.setAnimStyle(QuickAction.ANIM_REFLECT);
 			}
 		});
+
+		btnChangeView.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				Intent i = new Intent(BienBaoSwitcher.this,
+						BienBaoGridview.class);
+				startActivity(i);
+				finish();
+			}
+		});
 	}
 
 	public void onItemSelected(AdapterView parent, View v, int position, long id) {
 		BienBao localBienBao = (BienBao) this.list_bienbao.get(position);
 		mSwitcher.setImageResource(((Integer) this.map
-				.get(localBienBao.link_anh)).intValue());
-		txtTenBB.setText(localBienBao.tenbb);
-		txtNoidung.setText(localBienBao.noidung);
+				.get(localBienBao.getLink_anh())).intValue());
+		txtTenBB.setText(localBienBao.getTenbb());
+		txtNoidung.setText(localBienBao.getNoidung());
 	}
 
 	public void onNothingSelected(AdapterView parent) {
@@ -132,7 +140,7 @@ public class BienBaoSwitcher extends Activity implements
 			ImageView image = new ImageView(context);
 			BienBao localBienBao = (BienBao) list_bienbao.get(position
 					+ this.start);
-			image.setImageResource(((Integer) map.get(localBienBao.link_anh))
+			image.setImageResource(((Integer) map.get(localBienBao.getLink_anh()))
 					.intValue());
 			image.setAdjustViewBounds(true);
 			image.setLayoutParams(new Gallery.LayoutParams(
@@ -142,72 +150,92 @@ public class BienBaoSwitcher extends Activity implements
 		}
 	}
 
-	public void inti() {
-
-		PopupMenuItem bienAll = new PopupMenuItem(ID_ALL, "Tất cả", getResources()
-				.getDrawable(R.drawable.menu_bb_all));
-		PopupMenuItem bienCam = new PopupMenuItem(ID_CAM, "Biển cấm", getResources()
-				.getDrawable(R.drawable.menu_bb_cam));
-		PopupMenuItem bienChiDan = new PopupMenuItem(ID_CHIDAN, "Biển chỉ dẫn",
-				getResources().getDrawable(R.drawable.menu_bb_chidan));
-		PopupMenuItem bienHieuLenh = new PopupMenuItem(ID_HIEULENH, "Biển hiệu lệnh", getResources()
-				.getDrawable(R.drawable.menu_bb_hieulenh));
-		PopupMenuItem bienNguyHiem = new PopupMenuItem(ID_NGUYHIEM, "Biển nguy hiểm", getResources()
-				.getDrawable(R.drawable.menu_bb_nguyhiem));
-
-//		// use setSticky(true) to disable QuickAction dialog being dismissed
-//		// after an item is clicked
-//		prevItem.setSticky(true);
-//		nextItem.setSticky(true);
-
-		// create QuickAction. Use QuickAction.VERTICAL or
-		// QuickAction.HORIZONTAL param to define layout
-		// orientation
-		quickAction = new PopupMenuAction(this, PopupMenuAction.VERTICAL);
-
-		// add action items into QuickAction
-		quickAction.addActionItem(bienAll);
-		quickAction.addActionItem(bienCam);
-		quickAction.addActionItem(bienChiDan);
-		quickAction.addActionItem(bienHieuLenh);
-		quickAction.addActionItem(bienNguyHiem);
+	private void setMenuAction() {
 
 		// Set listener for action item clicked
 		quickAction
 				.setOnActionItemClickListener(new PopupMenuAction.OnActionItemClickListener() {
 					public void onItemClick(PopupMenuAction source, int pos,
 							int actionId) {
-						PopupMenuItem actionItem = quickAction.getActionItem(pos);
+						// PopupMenuItem actionItem = quickAction
+						// .getActionItem(pos);
 
+						list_bienbao = new BienBaoDB(getApplicationContext())
+								.get_list_bienbao(actionId);
+						g.setAdapter(new ImageAdapter(getApplicationContext(),
+								0, list_bienbao.size() - 1, list_bienbao, map));
 						// here we can filter which action item was clicked with
 						// pos or actionId parameter
-						if (actionId == ID_ALL) {
-							
-						} else if (actionId == ID_CAM) {
-							list_bienbao = new BienBaoDB(getApplicationContext()).get_list_bienbao(ID_CAM);
-							g.setAdapter(new ImageAdapter(getApplicationContext(), 0, list_bienbao.size() - 1,
-									list_bienbao, map));
-						} else if (actionId == ID_CHIDAN) {
-
-						} else if (actionId == ID_HIEULENH) {
-
-						} else if (actionId == ID_NGUYHIEM) {
-
-						} else {
-
+						String click = "";
+						if (actionId == BienBaoDB.ID_ALL) {
+							btnMenu.setText(BienBaoDB.STR_ALL);
+							click = "Chọn xem tất cả";
+						} else if (actionId == BienBaoDB.ID_CAM) {
+							btnMenu.setText(BienBaoDB.STR_CAM);
+							click = "Chọn xem biển báo cấm";
+						} else if (actionId == BienBaoDB.ID_CHIDAN) {
+							btnMenu.setText(BienBaoDB.STR_CHIDAN);
+							click = "Chọn xembiển báo chỉ dẫn";
+						} else if (actionId == BienBaoDB.ID_HIEULENH) {
+							btnMenu.setText(BienBaoDB.STR_HIEULENH);
+							click = "Chọn xem biển báo hiệu lệnh";
+						} else if (actionId == BienBaoDB.ID_NGUYHIEM) {
+							btnMenu.setText(BienBaoDB.STR_NGUYHIEM);
+							click = "Chọn xem biển báo nguy hiểm";
+						} 
+						else if (actionId == BienBaoDB.ID_PHU) {
+							btnMenu.setText(BienBaoDB.STR_PHU);
+							click = "Chọn xem biển báo phụ";
+						}else {
+							click = "Không chọn gì cả";
 						}
+						Toast.makeText(getApplicationContext(), click,
+								Toast.LENGTH_SHORT).show();
 					}
 				});
+	}
 
-		// set listnener for on dismiss event, this listener will be called only
-		// if QuickAction dialog was dismissed
-		// by clicking the area outside the dialog.
-		quickAction.setOnDismissListener(new PopupMenuAction.OnDismissListener() {
-			public void onDismiss() {
-				Toast.makeText(getApplicationContext(), "Dismissed",
-						Toast.LENGTH_SHORT).show();
-			}
-		});
+	public static PopupMenuAction createPopupMenuBB(Context context) {
+		PopupMenuAction quickAction;
+		quickAction = new PopupMenuAction(context, PopupMenuAction.VERTICAL);
+		PopupMenuItem bienAll = new PopupMenuItem(BienBaoDB.ID_ALL,
+				BienBaoDB.STR_ALL, context.getResources().getDrawable(
+						R.drawable.grid_menu_all));
+		PopupMenuItem bienCam = new PopupMenuItem(BienBaoDB.ID_CAM,
+				BienBaoDB.STR_CAM, context.getResources().getDrawable(
+						R.drawable.grid_menu_cam));
+		PopupMenuItem bienNguyHiem = new PopupMenuItem(BienBaoDB.ID_NGUYHIEM,
+				BienBaoDB.STR_NGUYHIEM, context.getResources().getDrawable(
+						R.drawable.grid_menu_nguyhiem));
+		PopupMenuItem bienChiDan = new PopupMenuItem(BienBaoDB.ID_CHIDAN,
+				BienBaoDB.STR_CHIDAN, context.getResources().getDrawable(
+						R.drawable.grid_menu_chidan));
+		PopupMenuItem bienHieuLenh = new PopupMenuItem(BienBaoDB.ID_HIEULENH,
+				BienBaoDB.STR_HIEULENH, context.getResources().getDrawable(
+						R.drawable.grid_menu_hieulenh));
+		PopupMenuItem bienphu = new PopupMenuItem(BienBaoDB.ID_PHU,
+				BienBaoDB.STR_PHU, context.getResources().getDrawable(
+						R.drawable.grid_menu_phu));
+		
 
+		// // use setSticky(true) to disable QuickAction dialog being dismissed
+		// // after an item is clicked
+		// prevItem.setSticky(true);
+		// nextItem.setSticky(true);
+
+		// create QuickAction. Use QuickAction.VERTICAL or
+		// QuickAction.HORIZONTAL param to define layout
+		// orientation
+		
+
+		// add action items into QuickAction
+		quickAction.addActionItem(bienAll);
+		quickAction.addActionItem(bienCam);
+		quickAction.addActionItem(bienNguyHiem);
+		quickAction.addActionItem(bienChiDan);
+		quickAction.addActionItem(bienHieuLenh);
+		quickAction.addActionItem(bienphu);
+		
+		return quickAction;
 	}
 }

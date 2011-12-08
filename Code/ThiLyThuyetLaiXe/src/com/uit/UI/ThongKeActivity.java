@@ -16,7 +16,8 @@ import android.widget.TabHost;
 import android.widget.TextView;
 
 import android.widget.TabHost.TabSpec;
-
+//Activity cua Giao dien Thong Ke
+//gom 2 tab
 public class ThongKeActivity extends ActivityGroup  {
 	private TabHost mTabHost;
 	
@@ -44,6 +45,13 @@ public class ThongKeActivity extends ActivityGroup  {
 		setupTab(intent, new TextView(this), "Câu hỏi hay sai", R.drawable.t_icon_error);
 		
 	}
+	/**
+	 * Khoi tao Tab content
+	 * @param intent
+	 * @param view
+	 * @param tag tieu de hien thi
+	 * @param icon icon hieu thi
+	 */
 	private void setupTab(Intent intent, final View view, final String tag, final int icon) {
 		View tabview = createTabView(mTabHost.getContext(), tag, icon);
 
@@ -51,7 +59,13 @@ public class ThongKeActivity extends ActivityGroup  {
 		mTabHost.addTab(setContent);
 
 	}
-
+	/**
+	 * Khoi tao tab view
+	 * @param context 
+	 * @param text tieu de se hien thi
+	 * @param icon icon se hien thi
+	 * @return view duoc khoi tao
+	 */
 	private static View createTabView(final Context context, final String text, final int icon) {
 		View view = LayoutInflater.from(context).inflate(R.layout.activity_thongke_tab, null);
 		TextView tv = (TextView) view.findViewById(R.id.tabsText);

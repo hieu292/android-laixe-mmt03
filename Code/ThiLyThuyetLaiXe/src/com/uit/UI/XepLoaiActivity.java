@@ -138,8 +138,9 @@ public class XepLoaiActivity extends Activity {
 					tv[j].setText(ngay + "/" + thang + "/" + nam + "\n" + gio
 							+ ":" + phut + ":" + giay);
 				}
+				//set mau chan le
 				if(i % 2 == 0){
-					tv[j].setTextColor(Color.parseColor("#FF9933"));
+					tv[j].setTextColor(Color.parseColor("#FF3600"));
 				}else{
 					tv[j].setTextColor(Color.parseColor("#0000CC"));
 				}

@@ -28,5 +28,9 @@
          <activity android:name=".UI.ThongKeActivity"></activity>
          <activity android:name=".UI.BienBaoGridview"></activity>
          <activity android:name=".UI.BienBaoSwitcher"></activity>
+         <activity android:name=".UI.HocLuatActivity_Chuong"></activity>
+         <activity android:name=".UI.HocLuatActivity_Dieu"></activity>
+         <activity android:name=".UI.HocDeThiActivity"></activity>
+         <activity android:name=".UI.CauHoiActivity"></activity>
     </application>
 </manifest>
