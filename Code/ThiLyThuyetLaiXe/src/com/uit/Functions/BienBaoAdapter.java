@@ -67,11 +67,11 @@ public class BienBaoAdapter extends BaseAdapter {
 		View localView = this.li.inflate(R.layout.activity_bienbao_gridview,
 				paramViewGroup, false);
 		this.image = ((ImageView) localView
-				.findViewById(R.id.bienbao_grid_item_hinhanh));
+				.findViewById(R.id.grid_item_hinhanh));
 		this.ten_bienbao = ((TextView) localView
-				.findViewById(R.id.bienbao_grid_item_noidung));
-		this.ten_bienbao.setText(localItemBienbao.noidung);
-		this.image.setImageResource(((Integer)this.map.get(localItemBienbao.link_anh)).intValue());
+				.findViewById(R.id.grid_item_tenBB));
+		this.ten_bienbao.setText(localItemBienbao.getTenbb());
+		this.image.setImageResource(((Integer)this.map.get(localItemBienbao.getLink_anh())).intValue());
 		return localView;
 	}
 }

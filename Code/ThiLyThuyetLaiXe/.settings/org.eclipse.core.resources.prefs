@@ -1,12 +1,15 @@
-#Sat Dec 03 16:17:48 ICT 2011
+#Tue Dec 06 23:46:35 ICT 2011
 eclipse.preferences.version=1
 encoding//src/com/uit/Providers/BienBaoDB.java=UTF-8
-encoding//src/com/uit/Providers/CauHoi.java=UTF-8
+encoding//src/com/uit/Providers/CauHoiDB.java=UTF-8
+encoding//src/com/uit/Providers/LuatDB.java=UTF-8
 encoding//src/com/uit/Providers/XepLoai.java=UTF-8
 encoding//src/com/uit/UI/AccountActivity.java=UTF-8
 encoding//src/com/uit/UI/BaseActivity.java=UTF-8
 encoding//src/com/uit/UI/BienBaoGridview.java=UTF-8
 encoding//src/com/uit/UI/BienBaoSwitcher.java=UTF-8
+encoding//src/com/uit/UI/CauHoiActivity.java=UTF-8
 encoding//src/com/uit/UI/CauHoiHaySai.java=UTF-8
+encoding//src/com/uit/UI/HocDeThiActivity.java=UTF-8
 encoding//src/com/uit/UI/ThongKeActivity.java=UTF-8
 encoding//src/com/uit/UI/XepLoaiActivity.java=UTF-8

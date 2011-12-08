@@ -2,18 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/m_brg"
+    android:background="@drawable/t_bgr"
     android:orientation="vertical" >
 
     <TextView
-        android:id="@+id/a_txtUsername"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textColor="#000000"
-        android:textSize="25sp"
-        android:textStyle="bold" />
-
+        android:textColor="#FF0000"
+        android:layout_marginTop="15dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:text="Chương trình trắc nghiệm lái xe"/>
 
     <!-- ROW 1 -->
 
@@ -22,27 +22,29 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:layout_marginTop="20dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="15dp">
+            android:orientation="vertical" >
 
             <ImageButton
-                android:id="@+id/t_btnBB"
+                android:id="@+id/t_btnLuat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/a_button_add_style"
-                android:src="@drawable/a_icon_account"/>
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/t_button_style"
+                android:src="@drawable/t_icon_luat" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Thêm tài khoản"
+                android:text="Luật giao thông"
                 android:textColor="#000"
                 android:textSize="17dp" />
         </LinearLayout>
@@ -51,21 +53,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="5dp">
+            android:orientation="vertical" >
 
             <ImageButton
-                android:id="@+id/a_btnEdit"
+                android:id="@+id/t_btnBienBao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/a_button_edit_style"
-                android:src="@drawable/a_icon_account" />
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/t_button_style"
+                android:src="@drawable/t_icon_bienbao" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sửa tài khoản"
+                android:text="Biển báo"
                 android:textColor="#000"
                 android:textSize="17dp" />
         </LinearLayout>
@@ -77,28 +81,29 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginTop="50dp">
+        android:orientation="horizontal" >
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="15dp">
+            android:orientation="vertical" >
 
             <ImageButton
-                android:id="@+id/a_btnChange"
+                android:id="@+id/t_btnCauHoi"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/a_button_change_style"
-                android:src="@drawable/a_icon_account" />
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/t_button_style"
+                android:src="@drawable/t_icon_cauhoi" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chuyển đổi tài khoản"
+                android:text="Bộ câu hỏi"
                 android:textColor="#000"
                 android:textSize="17dp" />
         </LinearLayout>
@@ -107,22 +112,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:orientation="vertical">
+            android:orientation="vertical" >
 
             <ImageButton
-                android:id="@+id/a_btnDel"
+                android:id="@+id/t_btnHuongDan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/a_button_del_style"
-                android:src="@drawable/a_icon_account" />
+                android:layout_marginBottom="5dip"
+                android:layout_marginLeft="20dip"
+                android:layout_marginRight="20dip"
+                android:layout_marginTop="20dip"
+                android:background="@drawable/t_button_style"
+                android:src="@drawable/t_icon_huongdan" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Xóa tài khoản"
+                android:text="Hướng dẫn"
                 android:textColor="#000"
                 android:textSize="17dp" />
         </LinearLayout>
     </LinearLayout>
-
 </LinearLayout>

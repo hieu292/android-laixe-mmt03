@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.uit.R;
 import com.uit.Functions.TwoColorAdapter;
-import com.uit.Providers.CauHoi;
+import com.uit.Providers.CauHoiDB;
 
 /*
  * Purpose....
@@ -38,7 +38,7 @@ public class CauHoiHaySai extends ListActivity {
 		// get data from database
 		//
 		int index = 0;
-		CauHoi ch = new CauHoi(this);
+		CauHoiDB ch = new CauHoiDB(this);
 		ch.open();
 		Cursor c = ch.getMostWrongRows();
 		if (c.moveToFirst()) {
@@ -58,8 +58,8 @@ public class CauHoiHaySai extends ListActivity {
 			} while (c.moveToNext() && index < 30);
 		}
 		ch.close();
-		setListAdapter(new TwoColorAdapter(this, R.layout.activity_thongke_content,
-				noidung));
+		setListAdapter(new TwoColorAdapter(this,
+				R.layout.activity_thongke_content, noidung));
 
 		final int temp = index;
 
@@ -94,7 +94,8 @@ public class CauHoiHaySai extends ListActivity {
 		});
 	}
 
-	public void createDetailDialog(CharSequence charSequence) {
+	// hien thi dialog cho cau hoi onclick
+	private void createDetailDialog(CharSequence charSequence) {
 		final TextView input = new TextView(this);
 		input.setText(charSequence);
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -104,7 +105,6 @@ public class CauHoiHaySai extends ListActivity {
 				dialog.dismiss();
 			}
 		});
-
 		AlertDialog dialog = builder.create();
 		dialog.show();
 	}

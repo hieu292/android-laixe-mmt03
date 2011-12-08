@@ -10,17 +10,35 @@ import android.widget.ImageButton;
 
 public class HocTapActivity extends Activity {
 	
-	ImageButton btnBB;
+	ImageButton btnBB, btnHocLuat, btnDeThi;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_hoctap);
 		
-		btnBB = (ImageButton) findViewById(R.id.t_btnBB);
+		btnBB = (ImageButton) findViewById(R.id.t_btnBienBao);
+		btnHocLuat = (ImageButton) findViewById(R.id.t_btnLuat);
+		btnDeThi = (ImageButton) findViewById(R.id.t_btnCauHoi);
 		btnBB.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
 				Intent i = new Intent(HocTapActivity.this, BienBaoGridview.class);
+				startActivity(i);
+			}
+		});
+		
+		btnHocLuat.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(HocTapActivity.this, HocLuatActivity_Chuong.class);
+				startActivity(i);
+			}
+		});
+		
+		btnDeThi.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(HocTapActivity.this, HocDeThiActivity.class);
 				startActivity(i);
 			}
 		});

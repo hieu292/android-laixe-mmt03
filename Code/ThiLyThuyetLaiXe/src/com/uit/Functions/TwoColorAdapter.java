@@ -10,9 +10,16 @@ import android.widget.TextView;
 
 import com.uit.R;
 
+/**
+ * Class nham muc dich tao adapter cho listview Listview setAdapter nay, item se
+ * chia thanh 2 mau chan le khac nhau
+ * 
+ * @author Thuong
+ * 
+ */
 public class TwoColorAdapter extends ArrayAdapter<String> {
-	private final Activity context;
-	private final String[] names;
+	protected final Activity context;
+	protected final String[] names;
 
 	public TwoColorAdapter(Activity context, int layoutId, String[] names) {
 		super(context, layoutId, names);
@@ -20,10 +27,11 @@ public class TwoColorAdapter extends ArrayAdapter<String> {
 		this.names = names;
 	}
 
-	// static to save the reference to the outer class and to avoid access to
-	// any members of the containing class
-	static class ViewHolder {
-		public TextView textView;
+	// class tinh
+	// khoi tao 2 TextView dung de luu tru thong tin
+	protected static class ViewHolder {
+		protected TextView txtName;
+		protected TextView txtContent;
 	}
 
 	@Override
@@ -38,20 +46,21 @@ public class TwoColorAdapter extends ArrayAdapter<String> {
 		View rowView = convertView;
 		if (rowView == null) {
 			LayoutInflater inflater = context.getLayoutInflater();
-			rowView = inflater.inflate(R.layout.activity_thongke_content, null, true);
+			rowView = inflater.inflate(R.layout.activity_thongke_content, null,
+					true);
 			holder = new ViewHolder();
-			holder.textView = (TextView) rowView.findViewById(R.id.t_txtThongKe);
+			holder.txtName = (TextView) rowView.findViewById(R.id.t_txtThongKe);
 			rowView.setTag(holder);
 		} else {
 			holder = (ViewHolder) rowView.getTag();
 		}
 
-		holder.textView.setText(names[position]);
+		holder.txtName.setText(names[position]);
+		//set mau cua item theo thu tu chan, le
 		if (position % 2 == 0) {
-
-			holder.textView.setTextColor(Color.parseColor("#000033"));
+			holder.txtName.setTextColor(Color.parseColor("#000033"));
 		} else {
-			holder.textView.setTextColor(Color.parseColor("#CC0000"));
+			holder.txtName.setTextColor(Color.parseColor("#CC0000"));
 		}
 		return rowView;
 	}
