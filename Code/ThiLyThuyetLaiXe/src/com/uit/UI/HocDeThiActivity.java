@@ -19,6 +19,7 @@ public class HocDeThiActivity extends ActivityGroup {
 		public static final String CAUHOI_LUAT = "luat";
 		public static final String CAUHOI_BIENBAO = "bienbao";
 		public static final String CAUHOI_TINHHUONG = "tinhhuong";
+		public static final String CAUHOI_ALL = "all";
 		private TabHost mTabHost;
 		
 

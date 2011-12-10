@@ -7,12 +7,15 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.Bundle;
+import android.view.ContextThemeWrapper;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseExpandableListAdapter;
+import android.widget.Button;
 import android.widget.ExpandableListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -41,7 +44,6 @@ public class HocLuatActivity_Dieu extends Activity {
 		// Log.d("check", "" + chuong);
 		ArrayList<String> names = new ArrayList<String>();
 		ArrayList<String> contents = new ArrayList<String>();
-		
 
 		list_luat = new LuatDB(this).getDieu(chuong, LuatDB.ID_DIEU);
 
@@ -50,6 +52,7 @@ public class HocLuatActivity_Dieu extends Activity {
 		}
 
 		txtInfo = (TextView) findViewById(R.id.luat_txtInfo);
+		txtInfo.setText("Chương " + chuong);
 		list_noidung = (ListView) findViewById(R.id.luat_listview);
 		LuatListAdapter adapter = new LuatListAdapter(this, names, contents);
 		list_noidung.setAdapter(adapter);
@@ -59,38 +62,52 @@ public class HocLuatActivity_Dieu extends Activity {
 					int position, long id) {
 				Luat muc = new LuatDB(getApplicationContext())
 						.getLuatwithId(list_luat.get(position).getId() + 1);
-				createDialogInfo(list_luat.get(position).getNoidung(), muc.getNoidung());
+				createDialogInfo(list_luat.get(position).getNoidung(),
+						muc.getNoidung());
 			}
 		});
 	}
 
 	private void createDialogInfo(String dieu, String _noidung) {
-		String[] noidung = null;
-		noidung = new String[] { _noidung };
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		ListView txt =  new ListView(this);
-		txt.setAdapter( new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, noidung));
-		txt.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
-		
-		
-		builder.setTitle(dieu);
-		// builder.setIcon(R.drawable.s_icon_file);
-		builder.setView(txt);
-//		builder.setItems(noidung, new OnClickListener() {
-//
-//			public void onClick(DialogInterface dialog, int which) {
-//
-//			}
-//		});
-		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+		String[] noidung = { _noidung };
+		AlertDialog.Builder builder;
+		LayoutInflater inflater = (LayoutInflater) getApplicationContext()
+				.getSystemService(LAYOUT_INFLATER_SERVICE);
+		View layout = inflater.inflate(R.layout.dialog_luat,
+				(ViewGroup) findViewById(R.id.dialog_root));
+		// TextView nội dung câu hỏi
+		TextView txtTieude = (TextView) layout
+				.findViewById(R.id.dialog_content);
 
+		txtTieude.setText(dieu);
+
+		// set listview hiển thị những đáp án của câu hỏi
+		ListView list = (ListView) layout.findViewById(R.id.dialog_listview);
+		list.setAdapter(new ArrayAdapter<String>(this,
+				R.layout.dialog_listview, noidung));
+		list.setItemsCanFocus(false);
+		ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.MyTheme);
+		builder = new AlertDialog.Builder(ctw);
+		builder.setView(layout);
+
+		final Button btnOK = (Button) layout.findViewById(R.id.dialog_btnOK);
+		final AlertDialog dialog = builder.create();
+		btnOK.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+
+				dialog.dismiss();
+			}
+		});
+		builder.setPositiveButton("OK", new OnClickListener() {
+			
 			public void onClick(DialogInterface dialog, int which) {
 				dialog.dismiss();
 			}
 		});
-
-		AlertDialog dialog = builder.create();
+		dialog.getWindow().setLayout(
+				android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		dialog.show();
 	}
 }

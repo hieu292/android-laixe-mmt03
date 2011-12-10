@@ -10,7 +10,7 @@ import android.widget.ImageButton;
 
 public class HocTapActivity extends Activity {
 	
-	ImageButton btnBB, btnHocLuat, btnDeThi;
+	ImageButton btnBB, btnHocLuat, btnDeThi, btnHuongDan;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -19,6 +19,8 @@ public class HocTapActivity extends Activity {
 		btnBB = (ImageButton) findViewById(R.id.t_btnBienBao);
 		btnHocLuat = (ImageButton) findViewById(R.id.t_btnLuat);
 		btnDeThi = (ImageButton) findViewById(R.id.t_btnCauHoi);
+		btnHuongDan = (ImageButton) findViewById(R.id.t_btnHuongDan);
+		
 		btnBB.setOnClickListener(new View.OnClickListener() {
 			
 			public void onClick(View v) {
@@ -39,6 +41,14 @@ public class HocTapActivity extends Activity {
 			
 			public void onClick(View v) {
 				Intent i = new Intent(HocTapActivity.this, HocDeThiActivity.class);
+				startActivity(i);
+			}
+		});
+		
+		btnHuongDan.setOnClickListener(new View.OnClickListener() {
+			
+			public void onClick(View v) {
+				Intent i = new Intent(HocTapActivity.this, HuongDanActivity.class);
 				startActivity(i);
 			}
 		});

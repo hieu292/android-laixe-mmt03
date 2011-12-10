@@ -41,7 +41,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
         android:layout_marginTop="60dp"
-        android:background="#ffffff" />
+        android:background="#ffffff"/>
     <TextView
         android:id="@+id/switch_tenbb"
         style="@style/ButtonText"
@@ -57,7 +57,8 @@
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:textColor="#222386" />
+        android:textColor="#ffffff" 
+        android:padding="10dp"/>
 
     <Gallery
         android:id="@+id/gallery"

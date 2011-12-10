@@ -189,7 +189,7 @@ public class HashmapDB {
 		return localHashMap;
 	}
 
-	public static HashMap<String, Integer> getMapImageCauHoi() {
+	public HashMap<String, Integer> getMapImageCauHoi() {
 		HashMap<String, Integer> localHashMap = new HashMap<String, Integer>();
 		
 		localHashMap.put("161.png", R.drawable.ch_161);
