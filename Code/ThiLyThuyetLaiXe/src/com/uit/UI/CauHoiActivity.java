@@ -5,7 +5,6 @@ import java.util.HashMap;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
@@ -17,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TableLayout.LayoutParams;
 import android.widget.TextView;
 
 import com.uit.R;
@@ -32,17 +30,18 @@ import com.uit.objects.CauHoi;
  * and how you can remember this answer. 
  */
 public class CauHoiActivity extends ListActivity {
-	private static final String LUA_CHON1 = "A. ";
-	private static final String LUA_CHON2 = "B. ";
-	private static final String LUA_CHON3 = "C. ";
-	private static final String LUA_CHON4 = "D. ";
-	HashMap<String, Integer> map_hinhanh = new HashMap<String, Integer>();
+	protected static final String LUA_CHON1 = "A. ";
+	protected static final String LUA_CHON2 = "B. ";
+	protected static final String LUA_CHON3 = "C. ";
+	protected static final String LUA_CHON4 = "D. ";
+	protected HashMap<String, Integer> map_hinhanh = new HashMap<String, Integer>();
 
-	ArrayList<CauHoi> list_cauhoi = new ArrayList<CauHoi>();
+	protected ArrayList<CauHoi> list_cauhoi = new ArrayList<CauHoi>();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		// tạo một đối tượng hashmap
 		map_hinhanh = new HashmapDB().getMapImageCauHoi();
 		String loai_cauhoi = getIntent().getExtras().getString(
 				HocDeThiActivity.LOAI_CAUHOI);
@@ -53,6 +52,7 @@ public class CauHoiActivity extends ListActivity {
 				R.layout.activity_thongke_content, noidung));
 
 		ListView lv = getListView();
+		lv.setScrollingCacheEnabled(false);
 		lv.setTextFilterEnabled(true);
 
 		lv.setOnItemClickListener(new OnItemClickListener() {
@@ -64,17 +64,22 @@ public class CauHoiActivity extends ListActivity {
 		});
 	}
 
-	private String[] createListCauhoi(String loai_cauhoi) {
+	public String[] createListCauhoi(String loai_cauhoi) {
 		int[] list_loai;
+		// phân loại câu hỏi
 		if (loai_cauhoi.equals(HocDeThiActivity.CAUHOI_LUAT)) {
 			list_loai = new int[] { 1, 2, 3, 4, 5, 6 };
 		} else if (loai_cauhoi.equals(HocDeThiActivity.CAUHOI_BIENBAO)) {
 			list_loai = new int[] { 7 };
-		} else {
+		} else if (loai_cauhoi.equals(HocDeThiActivity.CAUHOI_TINHHUONG)) {
 			list_loai = new int[] { 8 };
+		} else {
+			list_loai = new int[] { 1, 2, 3, 4, 5, 6, 7, 8 };
 		}
+		// lấy câu hỏi đúng thể loại đã phân từ database
 		list_cauhoi = new CauHoiDB(this).getTheLoai(list_loai);
 		String[] noidung = new String[list_cauhoi.size()];
+		// set noi dung
 		for (int i = 0; i < list_cauhoi.size(); i++) {
 			int idCau = list_cauhoi.get(i).getId();
 			noidung[i] = "Câu " + idCau + ": "
@@ -90,10 +95,11 @@ public class CauHoiActivity extends ListActivity {
 		String luachon3 = LUA_CHON3 + cauhoi.getLuachon3();
 		String luachon4 = LUA_CHON4 + cauhoi.getLuachon4();
 
-		if (cauhoi.getLuachon3() != null && cauhoi.getLuachon4() == null) {
+		// tạo chuỗi lựa chọn cho adapter listview
+		if (!cauhoi.getLuachon3().equals("") && cauhoi.getLuachon4().equals("")) {
 			luachon = new String[] { luachon1, luachon2, luachon3 };
 		} else if (cauhoi.getLuachon4() != null
-				&& !(cauhoi.getLuachon4()).trim().endsWith("")) {
+				&& !(cauhoi.getLuachon4()).equals("")) {
 			luachon = new String[] { luachon1, luachon2, luachon3, luachon4 };
 		} else {
 			luachon = new String[] { luachon1, luachon2 };
@@ -104,15 +110,18 @@ public class CauHoiActivity extends ListActivity {
 				.getSystemService(LAYOUT_INFLATER_SERVICE);
 		View layout = inflater.inflate(R.layout.dialog_cauhoi,
 				(ViewGroup) findViewById(R.id.dialog_root));
-
+		// TextView nội dung câu hỏi
 		TextView txtCauHoi = (TextView) layout
 				.findViewById(R.id.dialog_content);
 
 		txtCauHoi.setText("Câu " + cauhoi.getId() + ": " + cauhoi.getNoidung());
 
+		// TextView đáp án
 		final TextView txtDapAn = (TextView) layout
 				.findViewById(R.id.dialog_dapan);
 
+		// set hình ảnh cho câu hỏi (nếu có)
+		// dùng hashmap
 		if (cauhoi.getHinhanh() != null && !cauhoi.getHinhanh().equals("")) {
 			ImageView image = (ImageView) layout
 					.findViewById(R.id.dialog_image);
@@ -120,6 +129,7 @@ public class CauHoiActivity extends ListActivity {
 					.getHinhanh())).intValue());
 		}
 
+		// set listview hiển thị những đáp án của câu hỏi
 		ListView list = (ListView) layout.findViewById(R.id.dialog_listview);
 		list.setAdapter(new ArrayAdapter<String>(this,
 				R.layout.dialog_listview, luachon));
@@ -128,13 +138,19 @@ public class CauHoiActivity extends ListActivity {
 		builder = new AlertDialog.Builder(ctw);
 		builder.setView(layout);
 
-		final Button btnDapan = (Button) layout.findViewById(R.id.dialog_btnDapan);
+		final Button btnDapan = (Button) layout
+				.findViewById(R.id.dialog_btnDapan);
+		final AlertDialog dialog = builder.create();
 		btnDapan.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				txtDapAn.setText("Đáp án: " + cauhoi.getDapan());
-				btnDapan.setText("Đáp án: " + cauhoi.getDapan());
-//				btnDapan.
+
+				if (btnDapan.getText().equals("  Xem đáp án")) {
+					btnDapan.setText(" OK!!!");
+					txtDapAn.setText("Đáp án: " + cauhoi.getDapan());
+				} else {
+					dialog.dismiss();
+				}
 			}
 		});
 
@@ -148,15 +164,15 @@ public class CauHoiActivity extends ListActivity {
 		// AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		// builder.setView(input);
 		// builder.setView(abc);
-		builder.setCancelable(true);
-		builder.setNegativeButton("OK", new DialogInterface.OnClickListener() {
+		// builder.setCancelable(true);
+		// builder.setNegativeButton("OK", new DialogInterface.OnClickListener()
+		// {
+		//
+		// public void onClick(DialogInterface dialog, int which) {
+		// dialog.dismiss();
+		// }
+		// });
 
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-			}
-		});
-
-		AlertDialog dialog = builder.create();
 		dialog.getWindow().setLayout(
 				android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN);

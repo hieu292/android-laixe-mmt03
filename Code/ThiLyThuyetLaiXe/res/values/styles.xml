@@ -89,4 +89,11 @@
         <item name="android:centerMedium">@drawable/dialog_body</item>
         <item name="android:windowIsFloating">false</item>
 	</style>
+	<style name="dialog2">
+        <item name="android:centerBright">@drawable/dialog_body</item>
+        <item name="android:bottomBright">@drawable/dialog_footer</item>
+        <item name="android:bottomMedium">@drawable/dialog_footer</item>
+        <item name="android:centerMedium">@drawable/dialog_body</item>
+        <item name="android:windowIsFloating">true</item>
+	</style>
 </resources>

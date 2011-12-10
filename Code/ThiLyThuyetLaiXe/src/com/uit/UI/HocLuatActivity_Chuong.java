@@ -37,7 +37,7 @@ public class HocLuatActivity_Chuong extends Activity {
 		ArrayList<Luat> list_luat = new ArrayList<Luat>();
 		list_luat = new LuatDB(this).getChuong();
 		for (int i = 0; i < list_luat.size(); i++) {
-			names.add("Chuong " + list_luat.get(i).getChuong() + " :");
+			names.add("Chương " + list_luat.get(i).getChuong());
 			contents.add(list_luat.get(i).getNoidung());
 		}
 		txtInfo = (TextView) findViewById(R.id.luat_txtInfo);

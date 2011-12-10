@@ -32,5 +32,6 @@
          <activity android:name=".UI.HocLuatActivity_Dieu"></activity>
          <activity android:name=".UI.HocDeThiActivity"></activity>
          <activity android:name=".UI.CauHoiActivity"></activity>
+         <activity android:name=".UI.HuongDanActivity"></activity>
     </application>
 </manifest>

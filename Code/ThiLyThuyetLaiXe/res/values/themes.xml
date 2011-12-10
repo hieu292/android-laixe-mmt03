@@ -3,4 +3,7 @@
 	<style name="MyTheme" parent="@android:style/Theme">
 		<item name="android:alertDialogStyle">@style/dialog</item>
 	</style>
+	<style name="Theme2" parent="@android:style/Theme">
+		<item name="android:alertDialogStyle">@style/dialog2</item>
+	</style>
 </resources>
