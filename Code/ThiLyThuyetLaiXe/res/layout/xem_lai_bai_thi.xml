@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@color/maunen_thi">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+		<TableLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="match_parent"
+		    android:layout_weight="70" >
+		    <TableLayout>
+		        <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center" >
+		            <TextView
+				        android:id="@+id/xlbt_txtTenNguoiThi"
+				        android:layout_width="match_parent"
+				        android:layout_height="wrap_content"
+				        android:text="No Name"
+				        android:textSize="18dp"
+				        android:gravity="center"
+				        android:textColor="@color/tennguoithi"
+				        android:typeface="serif"/>
+		        </TableRow>
+		        <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center">
+		            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" >
+		                <ImageButton android:background="@drawable/thi_back" 
+		            	    android:layout_width="wrap_content" android:layout_height="wrap_content"
+		            	    android:layout_gravity="left"		            	    
+		            	    android:id="@+id/xlbt_btnThiPrev"
+		            	    />
+	            	
+		            	<TextView android:layout_width="wrap_content" 
+		            	    android:layout_height="wrap_content" 
+		            	    android:id="@+id/xlbt_txtDiem"
+		            	    android:text="Điểm Thi"
+		            	    android:layout_gravity="center"
+		            	    android:textColor="@color/dongho_xanh"
+		            	    android:textSize="20dp"
+		            	    android:paddingLeft="40px"
+		            	    android:paddingRight="40px"
+		            	    android:typeface="monospace"
+		            	    android:textStyle="bold"/>
+		            	
+		            	<ImageButton android:background="@drawable/thi_next" 
+		            	    android:layout_width="wrap_content" android:layout_height="wrap_content"
+		            	    android:layout_gravity="right"
+		            	    android:id="@+id/xlbt_btnThiNext"
+		            	    />
+		            </LinearLayout>
+		            
+	            	
+	               
+		            
+		            
+		        </TableRow>
+		    </TableLayout> 
+		</TableLayout>
+		
+		
+			
+    </LinearLayout>   
+    <!-- 
+    <Button android:id="@+id/xlbt_pause" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Pause"/>
+    <Button android:id="@+id/xlbt_resume" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Resume"/>
+     -->
+    <!-- cau hoi -->
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <HorizontalScrollView 
+		   android:layout_width="fill_parent" android:layout_height="wrap_content">
+		   <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/xlbt_layoutCacCauHoi">
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_one"
+		           android:id="@+id/xlbt_imageCau1"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_two"
+		           android:id="@+id/xlbt_imageCau2"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_three"
+		           android:id="@+id/xlbt_imageCau3"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_four"
+		           android:id="@+id/xlbt_imageCau4"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_five"
+		           android:id="@+id/xlbt_imageCau5"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_six"
+		           android:id="@+id/xlbt_imageCau6"/>
+		       
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_seven"
+		           android:id="@+id/xlbt_imageCau7"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_eight"
+		           android:id="@+id/xlbt_imageCau8"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_nine"
+		           android:id="@+id/xlbt_imageCau9"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_ten"
+		           android:id="@+id/xlbt_imageCau10"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_elevent"
+		           android:id="@+id/xlbt_imageCau11"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_twelve"
+		           android:id="@+id/xlbt_imageCau12"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_thirteen"
+		           android:id="@+id/xlbt_imageCau13"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_fourteen"
+		           android:id="@+id/xlbt_imageCau14"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_fifteen"
+		           android:id="@+id/xlbt_imageCau15"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_sixteen"
+		           android:id="@+id/xlbt_imageCau16"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_seventeen"
+		           android:id="@+id/xlbt_imageCau17"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_eighteen"
+		           android:id="@+id/xlbt_imageCau18"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_nineteen"
+		           android:id="@+id/xlbt_imageCau19"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_twenty"
+		           android:id="@+id/xlbt_imageCau20"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_one"
+		           android:id="@+id/xlbt_imageCau21"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_two"
+		           android:id="@+id/xlbt_imageCau22"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_three"
+		           android:id="@+id/xlbt_imageCau23"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_four"
+		           android:id="@+id/xlbt_imageCau24"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_five"
+		           android:id="@+id/xlbt_imageCau25"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_six"
+		           android:id="@+id/xlbt_imageCau26"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_seven"
+		           android:id="@+id/xlbt_imageCau27"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_eight"
+		           android:id="@+id/xlbt_imageCau28"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_t_nine"
+		           android:id="@+id/xlbt_imageCau29"/>
+		       <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+		           android:paddingLeft="2px" android:paddingRight="2px" android:background="@drawable/n_thirty"
+		           android:id="@+id/xlbt_imageCau30"/>
+		   </LinearLayout>
+	     </HorizontalScrollView>
+    </LinearLayout>
+    <TableLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+    	android:id="@+id/xlbt_layoutContainer" android:scrollbars="vertical"
+    	android:background="@color/maunen_cacphuongantraloi">
+    	
+        <TableRow android:layout_width="fill_parent" android:layout_height="wrap_content" android:background="@color/maunen_cauhoithi">
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
+
+            	<TextView
+            	    android:id="@+id/xlbt_txtNoidungCauhoi"
+            	    android:layout_width="320dp"
+            	    android:layout_height="wrap_content"
+            	    android:paddingBottom="5px"
+            	    android:paddingLeft="8px"
+            	    android:paddingTop="3px"
+            	    android:textColor="@color/mautrang"
+            	    android:textSize="15dp"
+            	    android:typeface="sans" />
+
+	            <ImageView
+	                android:id="@+id/xlbt_imageHinhChoCauHoi"
+	                android:layout_gravity="center"
+	                android:layout_width="match_parent"
+	                android:layout_height="match_parent"
+	                	                
+	                android:paddingBottom="5px"
+	                android:paddingLeft="5px"
+	                android:paddingRight="5px"
+	                android:paddingTop="5px" />
+    
+            </LinearLayout>
+            
+        </TableRow>
+        <TableRow android:layout_width="fill_parent" android:layout_height="fill_parent" android:background="@color/maunen_cacphuongantraloi">
+            <LinearLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+            	<ListView
+            	    android:id="@+id/xlbt_listPhuongAn"
+            	    android:layout_width="320dp"
+            	    android:layout_height="fill_parent"
+            	    android:scrollbars="vertical"
+            	    
+            	     >
+	                
+	            </ListView>    
+	            
+            </LinearLayout>
+            
+        </TableRow>
+        
+        
+        
+    </TableLayout>
+    
+   
+</LinearLayout>
+

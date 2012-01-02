@@ -19,10 +19,11 @@ public class NgayThang {
 	 */
 	public String[] FromLongToMinSec(int time){
 		String[] result = new String[2];//array of min and sec
-		int min = time/60;
-		int sec = time % 60;
+		int second = (time/1000) % 60;
+		int min = (time/1000)/60;
+		
 		result[0] = ((Integer)min).toString();
-		result[1] = ((Integer)sec).toString();
+		result[1] = ((Integer)second).toString();
 		return result;
 	}
 }

@@ -33,5 +33,8 @@
          <activity android:name=".UI.HocDeThiActivity"></activity>
          <activity android:name=".UI.CauHoiActivity"></activity>
          <activity android:name=".UI.HuongDanActivity"></activity>
+         <activity android:name=".UI.ThiThuActivity"></activity>
+    	 <activity android:name=".UI.KetQuaMotAccount"></activity>
+    	 <activity android:name=".UI.XemLaiBaiThi"></activity>
     </application>
 </manifest>

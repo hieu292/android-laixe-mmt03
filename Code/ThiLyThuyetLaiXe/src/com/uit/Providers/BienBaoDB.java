@@ -23,8 +23,7 @@ public class BienBaoDB {
 	public static final int ID_HIEULENH = 3;
 	public static final int ID_CHIDAN = 4;
 	public static final int ID_PHU = 5;
-	
-	
+
 	public static final String STR_ALL = "Tất cả";
 	public static final String STR_CAM = "Biển cấm";
 	public static final String STR_HIEULENH = "Biển hiệu lệnh";
@@ -87,25 +86,6 @@ public class BienBaoDB {
 	public void close() {
 		DBHelper.close();
 	}
-
-	// insert a question into the database
-	// this function don't need
-	/*
-	 * public long insertRow(Context _context, String name, long _ngaygiothi,
-	 * long _thoigianhoanthanh, int _ketqua){ //get userid from name Person p =
-	 * new Person(_context); Cursor user = p.getUser(name);
-	 * 
-	 * int userId = -1; if(user.moveToFirst()){ //get id userId =
-	 * user.getInt(0); }
-	 * 
-	 * if(userId == -1){ Toast.makeText(_context,
-	 * "Không tồn tại tài khoản này!", Toast.LENGTH_SHORT).show(); return -1; }
-	 * else { ContentValues initialValues = new ContentValues();
-	 * initialValues.put(KEY_USERID, userId); initialValues.put(KEY_NGAYGIOTHI,
-	 * _ngaygiothi); initialValues.put(KEY_THOIGIANHOANTHANH,
-	 * _thoigianhoanthanh); initialValues.put(KEY_KETQUA, _ketqua); return
-	 * db.insert(DATABASE_TABLE, null, initialValues); } }
-	 */
 
 	// delete
 	public boolean deleteAllRows() {

@@ -34,58 +34,24 @@ public class CauHoiHaySai extends ListActivity {
 	protected static final String LUA_CHON2 = "B. ";
 	protected static final String LUA_CHON3 = "C. ";
 	protected static final String LUA_CHON4 = "D. ";
+	//anh xa hinh anh tu database
 	protected HashMap<String, Integer> map_hinhanh = new HashMap<String, Integer>();
 
 	protected ArrayList<CauHoi> list_cauhoi = new ArrayList<CauHoi>();
-
+	//so cau hoi toi da hien thi
 	private static final int SOCAU_HIENTHI = 30;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+
 		map_hinhanh = new HashmapDB().getMapImageCauHoi();
-		
+
 		list_cauhoi = new CauHoiDB(this).getMostWrongs(SOCAU_HIENTHI);
 
-//		final String[] noidung = new String[30];// 30 question is usually wrong
-//		int[] idCauhoi = new int[30];
-//		final String[] luachon1 = new String[30];
-//		final String[] luachon2 = new String[30];
-//		final String[] luachon3 = new String[30];
-//		final String[] luachon4 = new String[30];
-//		final String[] dapan = new String[30];
-//		String[] hinhanh = new String[30];
-//		int[] solantraloisai = new int[30];
-//
-//		// get data from database
-//		//
-//		int index = 0;
-//		CauHoiDB ch = new CauHoiDB(this);
-//		ch.open();
-//		Cursor c = ch.getMostWrongRows();
-//		if (c.moveToFirst()) {
-//			do {
-//				idCauhoi[index] = c.getInt(0);
-//				noidung[index] = String.valueOf(index + 1) + ": "
-//						+ c.getString(1);
-//				luachon1[index] = c.getString(2);
-//				luachon2[index] = c.getString(3);
-//				luachon3[index] = c.getString(4);
-//				luachon4[index] = c.getString(5);
-//				dapan[index] = c.getString(6);
-//				hinhanh[index] = c.getString(7);
-//				solantraloisai[index] = c.getInt(9);
-//
-//				index++;
-//			} while (c.moveToNext() && index < 30);
-//		}
-//		ch.close();
 		String[] noidung = createListCauhoi();
 		setListAdapter(new TwoColorAdapter(this,
 				R.layout.activity_thongke_content, noidung));
-
-//		final int temp = index;
 
 		ListView lv = getListView();
 		lv.setTextFilterEnabled(true);
@@ -93,51 +59,15 @@ public class CauHoiHaySai extends ListActivity {
 		lv.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				
+
 				createDetailDialog(list_cauhoi.get(position));
-//				String str = ((TextView) view).getText().toString();
-//				int i = 0;// luu giu vi tri cua cau hoi trong mang
-//				for (; i < temp; i++) {
-//					if (str.equals(noidung[i])) {
-//						break;
-//					}
-//				}
-//
-//				String show = str + "\n \n";
-//				show += "A: " + (luachon1[i]) + "\n \n";
-//				show += "B: " + (luachon2[i]) + "\n \n";
-//				if (luachon3[i] != null)
-//					show += "C: " + (luachon3[i]) + "\n \n";
-//				if (luachon4[i] != null && !(luachon4[i]).trim().endsWith(""))
-//					show += "D: " + (luachon4[i]) + "\n \n";
-//				show += "Đáp án: " + dapan[i];
-//
-//				createDetailDialog(show);
-//
-//				// truong hop co hinh anh, se hien thi hinh anh sau
-//				//
 			}
 		});
 	}
 
-//	// hien thi dialog cho cau hoi onclick
-//	private void createDetailDialog(CharSequence charSequence) {
-//		final TextView input = new TextView(this);
-//		input.setText(charSequence);
-//		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-//		builder.setView(input);
-//		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//			public void onClick(DialogInterface dialog, int whichButton) {
-//				dialog.dismiss();
-//			}
-//		});
-//		AlertDialog dialog = builder.create();
-//		dialog.show();
-//	}
-	
 	public String[] createListCauhoi() {
 		String[] noidung = new String[list_cauhoi.size()];
-		//set noi dung
+		// set noi dung
 		for (int i = 0; i < list_cauhoi.size(); i++) {
 			int idCau = list_cauhoi.get(i).getId();
 			noidung[i] = "Câu " + idCau + ": "
@@ -145,7 +75,7 @@ public class CauHoiHaySai extends ListActivity {
 		}
 		return noidung;
 	}
-	
+
 	public void createDetailDialog(final CauHoi cauhoi) {
 		String[] luachon;
 		String luachon1 = LUA_CHON1 + cauhoi.getLuachon1();
@@ -211,25 +141,6 @@ public class CauHoiHaySai extends ListActivity {
 				}
 			}
 		});
-
-		//
-		// ImageView abc = new ImageView(this);
-		// abc.setBackgroundResource(R.drawable.t_icon_huongdan);
-		// final TextView input = new TextView(this);
-		// input.setText(noidung);
-		// input.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-		// LayoutParams.FILL_PARENT));
-		// AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		// builder.setView(input);
-		// builder.setView(abc);
-		// builder.setCancelable(true);
-		// builder.setNegativeButton("OK", new DialogInterface.OnClickListener()
-		// {
-		//
-		// public void onClick(DialogInterface dialog, int which) {
-		// dialog.dismiss();
-		// }
-		// });
 
 		dialog.getWindow().setLayout(
 				android.view.WindowManager.LayoutParams.FLAG_FULLSCREEN,

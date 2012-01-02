@@ -9,11 +9,11 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center_horizontal"
-        android:textColor="#FF0000"
+        android:textColor="#0004FF"
         android:layout_marginTop="15dp"
-        android:textSize="20sp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:text="Chương trình trắc nghiệm lái xe"/>
+        android:text="Học tập luật giao thông đường bộ"/>
 
     <!-- ROW 1 -->
 
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:orientation="horizontal"
-        android:layout_marginTop="20dp">
+        android:layout_marginTop="15dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -45,8 +45,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Luật giao thông"
-                android:textColor="#000"
-                android:textSize="17dp" />
+                android:textSize="17sp" 
+                style="@style/ButtonText"/>
         </LinearLayout>
 
         <LinearLayout
@@ -70,8 +70,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Biển báo"
-                android:textColor="#000"
-                android:textSize="17dp" />
+                android:textSize="17sp" 
+                style="@style/ButtonText"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -81,7 +81,8 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -104,8 +105,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Bộ câu hỏi"
-                android:textColor="#000"
-                android:textSize="17dp" />
+                android:textSize="17sp" 
+                style="@style/ButtonText"/>
         </LinearLayout>
 
         <LinearLayout
@@ -128,9 +129,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hướng dẫn"
-                android:textColor="#000"
-                android:textSize="17dp" />
+                android:text="Mẹo thi cử"
+                android:textSize="17sp" 
+                style="@style/ButtonText"/>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
