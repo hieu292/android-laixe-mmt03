@@ -153,6 +153,7 @@ public class LuatDB {
 				list_luat.add(luat);
 			} while (c.moveToNext());
 		}
+		db.close();
 		return list_luat;
 	}
 
@@ -172,6 +173,7 @@ public class LuatDB {
 				list_luat.add(luat);
 			} while (c.moveToNext());
 		}
+		db.close();
 		return list_luat;
 	}
 	public Luat getLuatwithId(int id) {
@@ -188,6 +190,7 @@ public class LuatDB {
 				luat = new Luat(_id, chuong, capdo, noidung);
 			} while (c.moveToNext());
 		}
+		db.close();
 		return luat;
 	}
 

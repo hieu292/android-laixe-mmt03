@@ -14,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:layout_gravity="center_horizontal"
-        android:textColor="#0002A8"
+        android:textColor="#EA151E"
         android:textSize="17dp"/>
 
     <ListView

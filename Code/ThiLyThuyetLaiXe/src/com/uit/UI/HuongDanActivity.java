@@ -1,93 +1,62 @@
 package com.uit.UI;
 
-import java.util.ArrayList;
-
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.graphics.Color;
+import android.app.ActivityGroup;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.Window;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.ImageView;
+import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
 import com.uit.R;
-import com.uit.Functions.LuatListAdapter;
-import com.uit.Providers.HuongDanDB;
-import com.uit.objects.HuongDan;
 
-public class HuongDanActivity extends Activity {
 
-	TextView txtInfo;
-	ListView list_view;
-	ArrayList<HuongDan> list_huongdan = new ArrayList<HuongDan>();
+public class HuongDanActivity extends ActivityGroup {
+		private TabHost mTabHost;
+		
 
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		setContentView(R.layout.activity_hocluat);
-		list_huongdan = new HuongDanDB(this).get_all_huongdan();
-
-		ArrayList<String> list_tieude = new ArrayList<String>();
-		ArrayList<String> list_tieudecon = new ArrayList<String>();
-
-		for (int i = 0; i < list_huongdan.size(); i++) {
-			list_tieude.add(list_huongdan.get(i).getTieude());
-			list_tieudecon.add(list_huongdan.get(i).getTieudecon());
+		private void setupTabHost() {
+			mTabHost = (TabHost) findViewById(android.R.id.tabhost);
+			mTabHost.setup(this.getLocalActivityManager());
 		}
 
-		txtInfo = (TextView) findViewById(R.id.luat_txtInfo);
-		txtInfo.setText("Hướng dẫn lái xe an toàn");
-		list_view = (ListView) findViewById(R.id.luat_listview);
-		LuatListAdapter adapter = new LuatListAdapter(this, list_tieude,
-				list_tieudecon);
-		list_view.setAdapter(adapter);
+		
+		@Override
+		public void onCreate(Bundle savedInstanceState) {
+			super.onCreate(savedInstanceState);
+			requestWindowFeature(Window.FEATURE_NO_TITLE);
+			setContentView(R.layout.activity_thongke);
 
-		list_view.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				createDialogInfo(list_huongdan.get(position));
-			}
-		});
+			setupTabHost();
+			//mTabHost.getTabWidget().setDividerDrawable(R.drawable.tab_divider);
 
+			Intent intent;
+			
+			intent = new Intent(this, HuongDanLamBai.class);
+			setupTab(intent, new TextView(this), "Cách làm bài", R.drawable.icon_meothi);
+
+			intent = new Intent().setClass(this, MeoThi.class);
+			setupTab(intent, new TextView(this), "Lái xe an toàn", R.drawable.icon_cachlambai);
+			
+		}
+		private void setupTab(Intent intent, final View view, final String tag, final int icon) {
+			View tabview = createTabView(mTabHost.getContext(), tag, icon);
+
+			TabSpec setContent = mTabHost.newTabSpec(tag).setIndicator(tabview).setContent(intent);		
+			mTabHost.addTab(setContent);
+
+		}
+
+		private static View createTabView(final Context context, final String text, final int icon) {
+			View view = LayoutInflater.from(context).inflate(R.layout.activity_thongke_tab, null);
+			TextView tv = (TextView) view.findViewById(R.id.tabsText);
+			ImageView img = (ImageView) view.findViewById(R.id.tabsIcon);
+			tv.setText(text);
+			img.setImageResource(icon);
+			return view;
+		}
 	}
-
-	private void createDialogInfo(HuongDan item) {
-		String[] noidung = { item.getNoidung() };
-		AlertDialog.Builder builder;
-		LayoutInflater inflater = (LayoutInflater) getApplicationContext()
-				.getSystemService(LAYOUT_INFLATER_SERVICE);
-		View layout = inflater.inflate(R.layout.dialog_huongdan,
-				(ViewGroup) findViewById(R.id.dialog_root));
-		TextView txtTieude = (TextView) layout.findViewById(R.id.dialog_tieude);
-		txtTieude.setText(item.getTieude());
-		// set listview hiển thị những đáp án của câu hỏi
-		ListView list = (ListView) layout.findViewById(R.id.dialog_listview);
-		list.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.dialog_meothi, noidung));
-		list.setItemsCanFocus(false);
-		list.setBackgroundColor(Color.TRANSPARENT);
-		ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme2);
-		builder = new AlertDialog.Builder(ctw);
-		builder.setView(layout);
-
-		builder.setPositiveButton("OK", new OnClickListener() {
-
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-			}
-		});
-
-		final AlertDialog dialog = builder.create();
-		dialog.show();
-	}
-}
