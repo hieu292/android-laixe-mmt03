@@ -25,26 +25,26 @@ public class UserAction {
 
 	}
 
-	public String AddUser(String username) {
-		String result = "";
-		boolean ok = true; // check name is true and don't exists
-
+	public int AddUser(String username) {
+		int result = 0;
+		
+		// check name is not null
+		if (username == null || username.trim().equals("")) {
+			return result = 1;
+//			result = "Tên tài khoản không thể để trống";
+			
+		}
+		
 		// get all users
 		user.open();
 		Cursor c = user.getAllUsers();
-		if (c.moveToFirst()) {
+		if (c != null && c.moveToFirst()) {
 			do {
-				// check name is not null
-				if (username == null || username.equals("")) {
-					result = "Tên tài khoản không thể để trống";
-					ok = false;
-					break;
-				}
 				// check name is not exists in database
 				if (user.CheckName(c, username)) {
-					result = "Tên tài khoản đã tồn tại";
-					ok = false;
-					break;
+					return result = 2;
+//					result = "Tên tài khoản đã tồn tại";
+					
 				}
 				// check email rule is true
 
@@ -52,30 +52,31 @@ public class UserAction {
 		}
 
 		// insert data
-		if (ok) {
-			// insert to database
-			long i = user.insertUser(username);
+		// insert to database
+		long i = user.insertUser(username);
 
-			if (i != -1)
-				result = "Thêm tài khoản thành công!";
-			else
-				result = "Thêm tài khoản thất bại";
-		}
+		if (i != -1)
+			result = 3;
+//			result = "Thêm tài khoản thành công!";
+		else
+			result = 4;
+//			result = "Thêm tài khoản thất bại";
 
 		// close adapter
 		user.close();
 		return result;
 	}
 
-	public String DelUser(String username) {
-		String result;
+	public int DelUser(String username) {
+		int result;
 
 		final UserDB p = new UserDB(context);
 		
 		boolean delete = false;
 
 		if (username == null) {
-			result = "Vui lòng chọn tài khoản";
+			result =  0;
+//			result = "Vui lòng chọn tài khoản";
 		} else {
 			int id = -1;
 			p.open();
@@ -90,7 +91,8 @@ public class UserAction {
 			}
 			// if don't exists username entered in database, warning!
 			if (id == -1) {
-				result = "Không tồn tại tài khoản này trong cơ sở dữ liệu";
+				result = 1;
+//				result = "Không tồn tại tài khoản này trong cơ sở dữ liệu";
 			} else {
 				// delete user name entered
 				//delete in any database table had this userID
@@ -107,9 +109,11 @@ public class UserAction {
 				
 				p.deleteUser(id);
 				if(delete == true){
-					result = "Xóa tài khoản thành công!";
+					result = 2;
+//					result = "Xóa tài khoản thành công!";
 				}else{
-					result = "Xóa tài khoản không thành công!";
+					result = 3;
+//					result = "Xóa tài khoản không thành công!";
 				}
 				
 			}

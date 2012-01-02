@@ -150,6 +150,7 @@ public class BienBaoDB {
 				bienbao = new BienBao(_id, linkanh, tenbb, noidung, phanloai);
 			} while (c.moveToNext());
 		}
+		db.close();
 		return bienbao;
 	}
 

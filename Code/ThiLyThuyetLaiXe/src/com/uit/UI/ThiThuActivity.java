@@ -19,6 +19,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ImageButton;
@@ -76,6 +77,7 @@ public class ThiThuActivity extends Activity implements OnClickListener {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(com.uit.R.layout.exam);
 
 		//
@@ -1058,6 +1060,7 @@ public class ThiThuActivity extends Activity implements OnClickListener {
 		case 1:
 			// tạo dialog khi người dùng click nút finish để kết thúc bài thi
 			AlertDialog.Builder builder2 = new AlertDialog.Builder(this);
+			builder2.setCancelable(false);
 			builder2.setMessage("Bạn có muốn xem kết quả ?");
 			builder2.setTitle("Bạn đã hoàn thành bài thi.");
 			builder2.setPositiveButton("Đồng ý",
@@ -1087,6 +1090,7 @@ public class ThiThuActivity extends Activity implements OnClickListener {
 		case 2:
 			// tạo dialog khi người dùng đã hết thời gian làm bài thi
 			AlertDialog.Builder builder3 = new AlertDialog.Builder(this);
+			builder3.setCancelable(false);
 			builder3.setMessage("Bạn có muốn xem kết quả ?");
 			builder3.setTitle("Bạn đã hết thời gian làm bài thi.");
 			builder3.setPositiveButton("Đồng ý",

@@ -12,10 +12,12 @@ import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.uit.R;
 import com.uit.Functions.NgayThang;
 import com.uit.Providers.UserDB;
 import com.uit.Providers.XepLoai;
@@ -32,6 +34,7 @@ public class LuocSu extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// Date testDate = new Date();
 		// Log.d("Time now!", ((Long)testDate.getTime()).toString());
 		SharedPreferences account = getSharedPreferences(UserAction.ACCOUNT, 0);
@@ -43,7 +46,7 @@ public class LuocSu extends Activity {
 		p = new UserDB(this);
 
 		TableLayout table = new TableLayout(this);
-
+		table.setBackgroundResource(R.drawable.ketqua_bgr);
 		table.setStretchAllColumns(true);
 		table.setShrinkAllColumns(true);
 
@@ -52,8 +55,6 @@ public class LuocSu extends Activity {
 
 		TableRow rowLabels = new TableRow(this);
 		TableRow[] rowDetail = new TableRow[10];
-
-		
 		
 		// title column/row
 		TextView title = new TextView(this);
@@ -167,9 +168,9 @@ public class LuocSu extends Activity {
 				}
 				//set mau chan le
 				if(i % 2 == 0){
-					tv[j].setTextColor(Color.parseColor("#FF3600"));
+					tv[j].setTextColor(Color.parseColor("#0004FF"));
 				}else{
-					tv[j].setTextColor(Color.parseColor("#0000CC"));
+					tv[j].setTextColor(Color.parseColor("#A80002"));
 				}
 				tv[j].setTypeface(Typeface.SERIF);
 				tv[j].setGravity(Gravity.CENTER);

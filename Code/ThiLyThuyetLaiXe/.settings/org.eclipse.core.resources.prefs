@@ -1,4 +1,4 @@
-#Mon Jan 02 13:32:41 ICT 2012
+#Mon Jan 02 22:23:19 ICT 2012
 eclipse.preferences.version=1
 encoding//src/com/uit/Functions/ChonBoDe.java=UTF-8
 encoding//src/com/uit/Functions/DongHo.java=UTF-8
@@ -18,8 +18,10 @@ encoding//src/com/uit/UI/HocDeThiActivity.java=UTF-8
 encoding//src/com/uit/UI/HocLuatActivity_Chuong.java=UTF-8
 encoding//src/com/uit/UI/HocLuatActivity_Dieu.java=UTF-8
 encoding//src/com/uit/UI/HuongDanActivity.java=UTF-8
+encoding//src/com/uit/UI/HuongDanLamBai.java=UTF-8
 encoding//src/com/uit/UI/KetQuaMotAccount.java=UTF-8
 encoding//src/com/uit/UI/LuocSu.java=UTF-8
+encoding//src/com/uit/UI/MeoThi.java=UTF-8
 encoding//src/com/uit/UI/ThiThuActivity.java=UTF-8
 encoding//src/com/uit/UI/ThongKeActivity.java=UTF-8
 encoding//src/com/uit/UI/XemLaiBaiThi.java=UTF-8

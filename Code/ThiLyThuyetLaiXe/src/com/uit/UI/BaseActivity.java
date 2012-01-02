@@ -8,19 +8,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Looper;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uit.R;
-import com.uit.Providers.Database;
 import com.uit.Providers.UserDB;
 import com.uit.objects.UserAction;
 
 public class BaseActivity extends Activity {
 
 	ImageButton btnHocTap, btnTaiKhoan, btnThongKe, btnThiThu;
+	TextView lblAbout;
 
 	/** Called when the activity is first created. */
 	@Override
@@ -29,9 +31,7 @@ public class BaseActivity extends Activity {
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_main);
 
-		Database db = new Database(this);
-		db.OpenDatabase();
-		
+		lblAbout = (TextView) findViewById(R.id.m_lblAbout);
 		btnHocTap = (ImageButton) findViewById(com.uit.R.id.m_btnTrain);
 		btnTaiKhoan = (ImageButton) findViewById(com.uit.R.id.m_btnAccount);
 		btnThongKe = (ImageButton) findViewById(com.uit.R.id.m_btnStatistic);
@@ -77,6 +77,15 @@ public class BaseActivity extends Activity {
 				}
 			}
 		});
+		
+		lblAbout.setOnClickListener(new OnClickListener() {
+			
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(BaseActivity.this, About.class);
+				startActivity(i);
+			}
+		});
 	}
 
 	public void createLoginDialog() {
@@ -89,16 +98,38 @@ public class BaseActivity extends Activity {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				String username = input.getText().toString().trim();
 				UserAction user = new UserAction(getBaseContext());
-				String result = user.AddUser(username);
-				if (result.equals("Thêm tài khoản thành công!")) {
+				int result = user.AddUser(username);
+				if (result == 3) {
 					user.storeInformation(username);
 					dialog.dismiss();
-					Intent intent = new Intent(BaseActivity.this,
-							ThiThuActivity.class);
+					Toast.makeText(getBaseContext(), "Thêm tài khoản thành công!", Toast.LENGTH_SHORT).show();
+					
+					final ProgressDialog progDialog = ProgressDialog.show(
+							BaseActivity.this, "Đang tạo đề thi.",
+							"Vui lòng chờ!", true);
+					new Thread() {
+						public void run() {
+							Looper.prepare();
+							try {
+								// sleep the thread, whatever time you want.
+								sleep(3000);
+							} catch (Exception e) {
+							}
+							progDialog.dismiss();
+							Looper.loop();
+						}
+					}.start();
+					
+					Intent intent = new Intent(BaseActivity.this,ThiThuActivity.class);
 					startActivity(intent);
-				}
-				Toast.makeText(getBaseContext(), result, Toast.LENGTH_SHORT)
-						.show();
+					
+				}else if(result == 1){
+					Toast.makeText(getBaseContext(), "Tên tài khoản không thể để trống!", Toast.LENGTH_SHORT).show();
+				} else if(result == 2){
+					Toast.makeText(getBaseContext(), "Tên tài khoản đã tồn tại!", Toast.LENGTH_SHORT).show();
+				} else if(result == 4){
+					Toast.makeText(getBaseContext(), "Thêm tài khoản thất bại!", Toast.LENGTH_SHORT).show();
+				}	
 			}
 		});
 		builder.setNegativeButton("Cancel",
