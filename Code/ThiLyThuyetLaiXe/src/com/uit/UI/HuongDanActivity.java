@@ -6,16 +6,16 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.BaseExpandableListAdapter;
-import android.widget.ExpandableListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -24,10 +24,6 @@ import com.uit.Functions.LuatListAdapter;
 import com.uit.Providers.HuongDanDB;
 import com.uit.objects.HuongDan;
 
-/**
- * Demonstrates expandable lists using a custom {@link ExpandableListAdapter}
- * from {@link BaseExpandableListAdapter}.
- */
 public class HuongDanActivity extends Activity {
 
 	TextView txtInfo;
@@ -37,6 +33,7 @@ public class HuongDanActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_hocluat);
 		list_huongdan = new HuongDanDB(this).get_all_huongdan();
 
@@ -76,8 +73,9 @@ public class HuongDanActivity extends Activity {
 		// set listview hiển thị những đáp án của câu hỏi
 		ListView list = (ListView) layout.findViewById(R.id.dialog_listview);
 		list.setAdapter(new ArrayAdapter<String>(this,
-				R.layout.dialog_listview, noidung));
+				R.layout.dialog_meothi, noidung));
 		list.setItemsCanFocus(false);
+		list.setBackgroundColor(Color.TRANSPARENT);
 		ContextThemeWrapper ctw = new ContextThemeWrapper(this, R.style.Theme2);
 		builder = new AlertDialog.Builder(ctw);
 		builder.setView(layout);

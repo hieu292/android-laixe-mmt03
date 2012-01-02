@@ -1,7 +1,10 @@
-#Sat Dec 10 14:27:09 ICT 2011
+#Mon Jan 02 13:32:41 ICT 2012
 eclipse.preferences.version=1
+encoding//src/com/uit/Functions/ChonBoDe.java=UTF-8
+encoding//src/com/uit/Functions/DongHo.java=UTF-8
 encoding//src/com/uit/Providers/BienBaoDB.java=UTF-8
 encoding//src/com/uit/Providers/CauHoiDB.java=UTF-8
+encoding//src/com/uit/Providers/DeThiRandom.java=UTF-8
 encoding//src/com/uit/Providers/HuongDanDB.java=UTF-8
 encoding//src/com/uit/Providers/LuatDB.java=UTF-8
 encoding//src/com/uit/Providers/XepLoai.java=UTF-8
@@ -15,5 +18,12 @@ encoding//src/com/uit/UI/HocDeThiActivity.java=UTF-8
 encoding//src/com/uit/UI/HocLuatActivity_Chuong.java=UTF-8
 encoding//src/com/uit/UI/HocLuatActivity_Dieu.java=UTF-8
 encoding//src/com/uit/UI/HuongDanActivity.java=UTF-8
+encoding//src/com/uit/UI/KetQuaMotAccount.java=UTF-8
+encoding//src/com/uit/UI/LuocSu.java=UTF-8
+encoding//src/com/uit/UI/ThiThuActivity.java=UTF-8
 encoding//src/com/uit/UI/ThongKeActivity.java=UTF-8
+encoding//src/com/uit/UI/XemLaiBaiThi.java=UTF-8
 encoding//src/com/uit/UI/XepLoaiActivity.java=UTF-8
+encoding//src/com/uit/objects/CustomAdapterForListView.java=UTF-8
+encoding//src/com/uit/objects/DeThi.java=UTF-8
+encoding//src/com/uit/objects/UserAction.java=UTF-8

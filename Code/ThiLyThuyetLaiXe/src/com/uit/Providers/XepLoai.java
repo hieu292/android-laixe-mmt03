@@ -7,11 +7,11 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.widget.Toast;
 
 public class XepLoai {
 	public static final String KEY_ROWID = "id";
 	public static final String KEY_USERID = "userid";
+	public static final String KEY_IDDETHI = "iddethi";
 	public static final String KEY_USERNAME = "name";
 	public static final String KEY_NGAYGIOTHI = "ngaygiothi";
 	public static final String KEY_THOIGIANHOANTHANH = "thoigianhoanthanh";
@@ -23,8 +23,8 @@ public class XepLoai {
 	private static final int DATABASE_VERSION = 1;
 	
 	private static final String DATABASE_CREATE = 
-			"create table thongke (id integer primary key autoincrement, userid integer not null, ngaygiothi long not null, "
-			+ "thoigianhoanthanh long, ketqua integer);";
+			"create table thongke (id integer primary key autoincrement, userid integer not null, iddethi integer not null, ngaygiothi long not null, "
+			+ "thoigianhoanthanh integer, ketqua integer);";
 	
 	
 	
@@ -80,31 +80,18 @@ public class XepLoai {
 	}
 
 	//insert a person into the database
-	public long insertRow(Context _context, String name, long _ngaygiothi, long _thoigianhoanthanh, int _ketqua){
-		//get userid from name
-		Person p = new Person(_context);
-		Cursor user = p.getUser(name);
-		
-		int userId = -1;
-		if(user.moveToFirst()){
-			//get id
-			userId = user.getInt(0);
-		}
-		
-		if(userId == -1){
-			Toast.makeText(_context, "Không tồn tại tài khoản này!", Toast.LENGTH_SHORT).show();
-			return -1;
-		}
-		else
-		{
+		public long insertRowByUserId(Context _context, int idUser, int idDeThi, long _ngaygiothi, int _thoigianhoanthanh, int _ketqua){
+			//get userid from name
 			ContentValues initialValues = new ContentValues();
-			initialValues.put(KEY_USERID, userId);
+			initialValues.put(KEY_USERID, idUser);
+			initialValues.put(KEY_IDDETHI, idDeThi);
 			initialValues.put(KEY_NGAYGIOTHI, _ngaygiothi);
 			initialValues.put(KEY_THOIGIANHOANTHANH, _thoigianhoanthanh);
 			initialValues.put(KEY_KETQUA, _ketqua);			
 			return db.insert(DATABASE_TABLE, null, initialValues);
+			
 		}
-	}
+
 
 	//Xoa tat ca cac hang du lieu trong bang thong ke
 	public boolean deleteAllRows(){
@@ -112,16 +99,40 @@ public class XepLoai {
 	}
 
 	//retrieves all rows
-	public Cursor getAllRows(){
-		return db.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_USERID, KEY_NGAYGIOTHI, KEY_THOIGIANHOANTHANH, KEY_KETQUA}, null, null, null, null, null);
+	public Cursor getAllRows() throws SQLException{
+		return db.query(DATABASE_TABLE, new String[] {KEY_ROWID, KEY_USERID, KEY_NGAYGIOTHI, KEY_THOIGIANHOANTHANH, KEY_KETQUA, KEY_IDDETHI}, null, null, null, null, null);
 	}
 	
 	//Truy van 10 nguoi thi tot nhat
 	public Cursor getTenRows() throws SQLException{
-		return db.query(DATABASE_TABLE, new String[] {KEY_USERID, KEY_NGAYGIOTHI, KEY_THOIGIANHOANTHANH, KEY_KETQUA}, null, null, null, null, KEY_KETQUA + " DESC, " + KEY_THOIGIANHOANTHANH + " ASC");
+		return db.query(DATABASE_TABLE, new String[] {KEY_USERID, KEY_NGAYGIOTHI, KEY_THOIGIANHOANTHANH, KEY_KETQUA, KEY_IDDETHI}, null, null, null, null, KEY_KETQUA + " DESC, " + KEY_THOIGIANHOANTHANH + " ASC");
 	}
 
-	
-	
+	//truy van thong tin theo ngaygio thi
+	public Cursor getInfoBelongTime(long ngaygiothi) throws SQLException{
+		return db.query(DATABASE_TABLE, new String[] {KEY_IDDETHI, KEY_USERID, KEY_THOIGIANHOANTHANH, KEY_KETQUA}, KEY_NGAYGIOTHI + "=" + ngaygiothi , null, null, null, null);
+	}
+
+	public void UpdateRowByUserId(int idUser,	long _ngaygiothi, int _thoigianhoanthanh, int _ketqua) {
+		
+		//get userid from name
+		ContentValues initialValues = new ContentValues();				
+		initialValues.put(KEY_THOIGIANHOANTHANH, _thoigianhoanthanh);
+		initialValues.put(KEY_KETQUA, _ketqua);			
+		db.update(DATABASE_TABLE, initialValues, KEY_USERID + "=" + idUser + " AND "
+				+ KEY_NGAYGIOTHI + "=" + _ngaygiothi, null) ;
+	}
+
+	public Cursor getTenRowsByUserId(int userID) throws SQLException{
+		return db.query(DATABASE_TABLE, new String[] {KEY_NGAYGIOTHI, KEY_KETQUA, KEY_THOIGIANHOANTHANH }, KEY_USERID + "=" + userID,
+				null, null, null, 
+				KEY_NGAYGIOTHI + " DESC " );
+		
+	}
+
+	public boolean DeleteByUserID(int userID) {
+		return db.delete(DATABASE_TABLE, KEY_USERID + "=" + userID , null) > 0;
+		
+	}
 
 }

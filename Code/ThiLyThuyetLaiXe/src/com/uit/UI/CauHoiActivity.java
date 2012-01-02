@@ -10,6 +10,7 @@ import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
@@ -41,6 +42,7 @@ public class CauHoiActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// tạo một đối tượng hashmap
 		map_hinhanh = new HashmapDB().getMapImageCauHoi();
 		String loai_cauhoi = getIntent().getExtras().getString(

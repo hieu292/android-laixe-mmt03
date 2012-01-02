@@ -11,12 +11,11 @@ import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.BaseExpandableListAdapter;
 import android.widget.Button;
-import android.widget.ExpandableListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -25,10 +24,6 @@ import com.uit.Functions.LuatListAdapter;
 import com.uit.Providers.LuatDB;
 import com.uit.objects.Luat;
 
-/**
- * Demonstrates expandable lists using a custom {@link ExpandableListAdapter}
- * from {@link BaseExpandableListAdapter}.
- */
 public class HocLuatActivity_Dieu extends Activity {
 
 	TextView txtInfo;
@@ -38,7 +33,10 @@ public class HocLuatActivity_Dieu extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_hocluat);
+		
+		//lay du lieu tu activity truoc do
 		int chuong = getIntent().getExtras().getInt(
 				HocLuatActivity_Chuong.ID_CHUONG);
 		// Log.d("check", "" + chuong);
@@ -51,6 +49,7 @@ public class HocLuatActivity_Dieu extends Activity {
 			names.add(list_luat.get(i).getNoidung());
 		}
 
+		//tạo dialog
 		txtInfo = (TextView) findViewById(R.id.luat_txtInfo);
 		txtInfo.setText("Chương " + chuong);
 		list_noidung = (ListView) findViewById(R.id.luat_listview);
@@ -62,6 +61,8 @@ public class HocLuatActivity_Dieu extends Activity {
 					int position, long id) {
 				Luat muc = new LuatDB(getApplicationContext())
 						.getLuatwithId(list_luat.get(position).getId() + 1);
+				
+				//tạo dialog hiển thị
 				createDialogInfo(list_luat.get(position).getNoidung(),
 						muc.getNoidung());
 			}

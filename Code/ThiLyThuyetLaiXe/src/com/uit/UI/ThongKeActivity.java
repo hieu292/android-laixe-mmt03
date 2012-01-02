@@ -1,21 +1,18 @@
 package com.uit.UI;
 
-
-import com.uit.R;
-
 import android.app.ActivityGroup;
-
 import android.content.Context;
 import android.content.Intent;
-
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.TabHost.TabSpec;
 import android.widget.TextView;
 
-import android.widget.TabHost.TabSpec;
+import com.uit.R;
 //Activity cua Giao dien Thong Ke
 //gom 2 tab
 public class ThongKeActivity extends ActivityGroup  {
@@ -31,6 +28,7 @@ public class ThongKeActivity extends ActivityGroup  {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_thongke);
 
 		setupTabHost();

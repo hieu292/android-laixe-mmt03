@@ -2,6 +2,7 @@ package com.uit.Providers;
 
 import java.util.ArrayList;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
@@ -207,9 +208,59 @@ public class CauHoiDB {
 						luachon4, dapan, hinhanh, theloai, solantraloisai);
 				cauhoi.add(temp);
 				index++;
-			} while (c.moveToNext() && index < count); //count = quy định số câu sai nhìu nhất được hiển thị
+			} while (c.moveToNext() && index < count); // count = quy định số
+														// câu sai nhìu nhất
+														// được hiển thị
 		}
 		db.close();
 		return cauhoi;
+	}
+
+	public boolean updateWrongAnswerById(int idQuestion) {
+
+		ContentValues args = new ContentValues();
+		args.put(KEY_SOLANTRALOISAI, getWrongNumberById(idQuestion) + 1);// tang
+																			// len
+																			// them
+																			// 1
+																			// lan
+																			// sai
+																			// nua
+																			// cho
+																			// cau
+																			// hoi
+																			// nay
+
+		return db.update(DATABASE_TABLE, args, KEY_ROWID + " = " + idQuestion,
+				null) > 0;
+	}
+
+	// get answer for questions has id input
+	public Cursor getAnswerAndImageById(int idQuestion) {
+		return db.query(DATABASE_TABLE,
+				new String[] { KEY_DAPAN, KEY_HINHANH }, KEY_ROWID + " = "
+						+ idQuestion, null, null, null, null);
+	}
+
+	// get question by id
+	public Cursor getQuestionById(int idQuestion) {
+		return db.query(DATABASE_TABLE, new String[] { KEY_NOIDUNG,
+				KEY_LUACHON1, KEY_LUACHON2, KEY_LUACHON3, KEY_LUACHON4,
+				KEY_DAPAN }, KEY_ROWID + " = " + idQuestion, null, null, null,
+				null);
+
+	}
+
+	// get wrong number of question has idQuestion
+	public int getWrongNumberById(int idQuestion) {
+		int result = 0;
+		Cursor c = db.query(DATABASE_TABLE,
+				new String[] { KEY_SOLANTRALOISAI }, KEY_ROWID + " = "
+						+ idQuestion, null, null, null, null);
+		if (c != null) {
+			c.moveToFirst();
+			result = c.getInt(0);
+		}
+		return result;
 	}
 }

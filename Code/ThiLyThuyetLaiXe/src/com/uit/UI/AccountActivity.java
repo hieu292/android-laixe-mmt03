@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.uit.R;
@@ -17,23 +17,21 @@ import com.uit.objects.UserAction;
 
 public class AccountActivity extends Activity {
 
-	TextView txtUsername;
-	ImageButton btnAdd, btnDel, btnEdit, btnChange;public AccountActivity() {
+	ImageButton btnAdd, btnDel, btnEdit, btnThongTin;
+	
+	public AccountActivity() {
 		// TODO Auto-generated constructor stub
 	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.activity_account);
 		
-		txtUsername = (TextView) findViewById(R.id.a_txtUsername);
 		btnAdd = (ImageButton) findViewById(R.id.a_btnAdd);
 		btnDel = (ImageButton) findViewById(R.id.a_btnDel);
-		btnChange = (ImageButton) findViewById(R.id.a_btnChange);
+		btnThongTin = (ImageButton) findViewById(R.id.a_btnInfo);
 		btnEdit = (ImageButton) findViewById(R.id.a_btnEdit);
-		
-		String username = getIntent().getExtras().getString(UserAction.ACCOUNT);
-		txtUsername.setText(username);
 		
 		btnAdd.setOnClickListener(new View.OnClickListener() {
 
@@ -42,10 +40,10 @@ public class AccountActivity extends Activity {
 			}
 		});
 
-		btnChange.setOnClickListener(new View.OnClickListener() {
+		btnThongTin.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-				CreateChangeUserDialog();
+				CreateInfoDialog();
 			}
 		});
 
@@ -59,7 +57,7 @@ public class AccountActivity extends Activity {
 		btnEdit.setOnClickListener(new View.OnClickListener() {
 
 			public void onClick(View v) {
-
+				createEditUserDialog();
 			}
 		});
 	}
@@ -86,7 +84,6 @@ public class AccountActivity extends Activity {
 				UserAction user = new UserAction(getBaseContext());
 				String result = user.AddUser(username);
 				if (result.equals("Thêm tài khoản thành công!")) {
-					txtUsername.setText(username);
 					user.storeInformation(username);
 					dialog.dismiss();
 				} else {
@@ -112,7 +109,7 @@ public class AccountActivity extends Activity {
 	}
 
 	public void CreateDelUserDialog() {
-		final String username = txtUsername.getText().toString();
+		final String username = null;
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		builder.setTitle("Bạn có chắc chắn muốn xóa tài khoản " + username);
 		builder.setPositiveButton("Delete",
@@ -125,11 +122,12 @@ public class AccountActivity extends Activity {
 						if (result.equals("Xóa tài khoản thành công!")) {
 							if (ListUser().length == 0) {
 								user.removeSaveInfo();
-								createAddUserDialog();
-								result = "Không có tài khoản nào được chọn, tạo tài khoản mới!";
-							} else {
-								CreateChangeUserDialog();
 							}
+//								createAddUserDialog();
+//								result = "Không có tài khoản nào được chọn, tạo tài khoản mới!";
+//							} else {
+//								CreateInfoDialog();
+//							}
 							dialog.dismiss();
 						} else {
 							CreateDelUserDialog();
@@ -150,38 +148,12 @@ public class AccountActivity extends Activity {
 		dialog.show();
 	}
 
-	public void CreateChangeUserDialog() {
-		final String[] listUser = ListUser();
-		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setSingleChoiceItems(listUser, 0, null);
-		builder.setTitle("Choose your Name...");
-		builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+	public void CreateInfoDialog() {
+		
+	}
 
-			public void onClick(DialogInterface dialog, int which) {
-				dialog.dismiss();
-				int itemChecked = ((AlertDialog) dialog).getListView()
-						.getCheckedItemPosition();
-				for (int i = 0; i < listUser.length; i++) {
-					if (itemChecked == i) {
-						String username = listUser[i];
-						txtUsername.setText(username);
-						new UserAction(AccountActivity.this)
-								.storeInformation(username);
-						dialog.dismiss();
-					}
-				}
-			}
-
-		});
-		builder.setNegativeButton("Cancel",
-				new DialogInterface.OnClickListener() {
-
-					public void onClick(DialogInterface dialog, int which) {
-						dialog.dismiss();
-					}
-				});
-		AlertDialog dialog = builder.create();
-		dialog.show();
+	public void createEditUserDialog() {
+		
 	}
 
 	private String[] ListUser() {
@@ -190,6 +162,7 @@ public class AccountActivity extends Activity {
 		// String[] usernames is a list of username query from database
 		listUser = u.getListofUserName(this);
 		return listUser;
-
 	}
+	
+	
 }

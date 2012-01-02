@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/luat_bgr" >
+    android:background="@drawable/m_brg" >
 
     <TextView
         android:id="@+id/luat_txtInfo"
@@ -14,7 +14,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginBottom="15dp"
         android:layout_gravity="center_horizontal"
-        android:textColor="#EA151E"
+        android:textColor="#0002A8"
         android:textSize="17dp"/>
 
     <ListView

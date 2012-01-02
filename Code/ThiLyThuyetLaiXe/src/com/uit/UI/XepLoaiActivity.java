@@ -3,7 +3,7 @@ package com.uit.UI;
 import java.util.Date;
 
 import com.uit.Functions.NgayThang;
-import com.uit.Providers.Person;
+import com.uit.Providers.UserDB;
 import com.uit.Providers.XepLoai;
 
 import android.app.Activity;
@@ -18,14 +18,14 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 public class XepLoaiActivity extends Activity {
-	Person p;
+	UserDB p;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		// Date testDate = new Date();
 		// Log.d("Time now!", ((Long)testDate.getTime()).toString());
-		p = new Person(this);
+		p = new UserDB(this);
 
 		TableLayout table = new TableLayout(this);
 
